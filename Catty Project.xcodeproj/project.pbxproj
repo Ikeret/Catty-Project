@@ -13,6 +13,7 @@
 		18A94A0324BEE1F5004AD052 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A94A0124BEE1F5004AD052 /* Main.storyboard */; };
 		18A94A0524BEE1F8004AD052 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A94A0424BEE1F8004AD052 /* Assets.xcassets */; };
 		18A94A0824BEE1F8004AD052 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A94A0624BEE1F8004AD052 /* LaunchScreen.storyboard */; };
+		DC7D4A8EF1E6AC715D425417 /* Pods_Catty_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CEBCCD5933D378BE59A0ECB /* Pods_Catty_Project.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		18A94A0424BEE1F8004AD052 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18A94A0724BEE1F8004AD052 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18A94A0924BEE1F8004AD052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B558C5B041E7F27E13F2096 /* Pods-Catty Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catty Project.release.xcconfig"; path = "Target Support Files/Pods-Catty Project/Pods-Catty Project.release.xcconfig"; sourceTree = "<group>"; };
+		4BFEAD41F213F8ECB403C826 /* Pods-Catty Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catty Project.debug.xcconfig"; path = "Target Support Files/Pods-Catty Project/Pods-Catty Project.debug.xcconfig"; sourceTree = "<group>"; };
+		6CEBCCD5933D378BE59A0ECB /* Pods_Catty_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catty_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC7D4A8EF1E6AC715D425417 /* Pods_Catty_Project.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				18A949FA24BEE1F5004AD052 /* Catty Project */,
 				18A949F924BEE1F5004AD052 /* Products */,
+				921CD557D2F2C65A46EDD736 /* Pods */,
+				45A99852F05EE585CEB7590B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,24 @@
 			path = "Catty Project";
 			sourceTree = "<group>";
 		};
+		45A99852F05EE585CEB7590B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6CEBCCD5933D378BE59A0ECB /* Pods_Catty_Project.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		921CD557D2F2C65A46EDD736 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4BFEAD41F213F8ECB403C826 /* Pods-Catty Project.debug.xcconfig */,
+				4B558C5B041E7F27E13F2096 /* Pods-Catty Project.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18A94A0C24BEE1F8004AD052 /* Build configuration list for PBXNativeTarget "Catty Project" */;
 			buildPhases = (
+				7CE2258E4F28D47293CABC1A /* [CP] Check Pods Manifest.lock */,
 				18A949F424BEE1F5004AD052 /* Sources */,
 				18A949F524BEE1F5004AD052 /* Frameworks */,
 				18A949F624BEE1F5004AD052 /* Resources */,
+				F67CEC1130B64AB210AFE31F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7CE2258E4F28D47293CABC1A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Catty Project-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F67CEC1130B64AB210AFE31F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Catty Project/Pods-Catty Project-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Catty Project/Pods-Catty Project-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Catty Project/Pods-Catty Project-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		18A949F424BEE1F5004AD052 /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		18A94A0D24BEE1F8004AD052 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BFEAD41F213F8ECB403C826 /* Pods-Catty Project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +370,7 @@
 		};
 		18A94A0E24BEE1F8004AD052 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B558C5B041E7F27E13F2096 /* Pods-Catty Project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

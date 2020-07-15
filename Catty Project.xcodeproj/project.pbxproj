@@ -3,16 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		18A949FC24BEE1F5004AD052 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A949FB24BEE1F5004AD052 /* AppDelegate.swift */; };
 		18A949FE24BEE1F5004AD052 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A949FD24BEE1F5004AD052 /* SceneDelegate.swift */; };
 		18A94A0024BEE1F5004AD052 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A949FF24BEE1F5004AD052 /* ViewController.swift */; };
-		18A94A0324BEE1F5004AD052 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A94A0124BEE1F5004AD052 /* Main.storyboard */; };
 		18A94A0524BEE1F8004AD052 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A94A0424BEE1F8004AD052 /* Assets.xcassets */; };
 		18A94A0824BEE1F8004AD052 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A94A0624BEE1F8004AD052 /* LaunchScreen.storyboard */; };
+		18A94A1724BEE5BA004AD052 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A94A1524BEE5BA004AD052 /* AppCoordinator.swift */; };
+		18A94A1824BEE5BA004AD052 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A94A1624BEE5BA004AD052 /* BaseCoordinator.swift */; };
+		18A94A1A24BEEC34004AD052 /* CatCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A94A1924BEEC34004AD052 /* CatCollectionController.swift */; };
+		18A94A1C24BEEC89004AD052 /* CatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A94A1B24BEEC89004AD052 /* CatCell.swift */; };
+		18A94A1E24BEEC9D004AD052 /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A94A1D24BEEC9D004AD052 /* Breed.swift */; };
+		18A94A2124BF0B6A004AD052 /* CatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A94A2024BF0B6A004AD052 /* CatAPI.swift */; };
+		18A94A2324BF1A8B004AD052 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A94A2224BF1A8B004AD052 /* User.swift */; };
 		DC7D4A8EF1E6AC715D425417 /* Pods_Catty_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CEBCCD5933D378BE59A0ECB /* Pods_Catty_Project.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,10 +27,17 @@
 		18A949FB24BEE1F5004AD052 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18A949FD24BEE1F5004AD052 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		18A949FF24BEE1F5004AD052 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		18A94A0224BEE1F5004AD052 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18A94A0424BEE1F8004AD052 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18A94A0724BEE1F8004AD052 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18A94A0924BEE1F8004AD052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18A94A1524BEE5BA004AD052 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		18A94A1624BEE5BA004AD052 /* BaseCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		18A94A1924BEEC34004AD052 /* CatCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCollectionController.swift; sourceTree = "<group>"; };
+		18A94A1B24BEEC89004AD052 /* CatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCell.swift; sourceTree = "<group>"; };
+		18A94A1D24BEEC9D004AD052 /* Breed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
+		18A94A1F24BEED4E004AD052 /* ТЗ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "ТЗ.md"; sourceTree = "<group>"; };
+		18A94A2024BF0B6A004AD052 /* CatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPI.swift; sourceTree = "<group>"; };
+		18A94A2224BF1A8B004AD052 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4B558C5B041E7F27E13F2096 /* Pods-Catty Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catty Project.release.xcconfig"; path = "Target Support Files/Pods-Catty Project/Pods-Catty Project.release.xcconfig"; sourceTree = "<group>"; };
 		4BFEAD41F213F8ECB403C826 /* Pods-Catty Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catty Project.debug.xcconfig"; path = "Target Support Files/Pods-Catty Project/Pods-Catty Project.debug.xcconfig"; sourceTree = "<group>"; };
 		6CEBCCD5933D378BE59A0ECB /* Pods_Catty_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catty_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +58,7 @@
 		18A949EF24BEE1F5004AD052 = {
 			isa = PBXGroup;
 			children = (
+				18A94A1F24BEED4E004AD052 /* ТЗ.md */,
 				18A949FA24BEE1F5004AD052 /* Catty Project */,
 				18A949F924BEE1F5004AD052 /* Products */,
 				921CD557D2F2C65A46EDD736 /* Pods */,
@@ -63,15 +77,69 @@
 		18A949FA24BEE1F5004AD052 /* Catty Project */ = {
 			isa = PBXGroup;
 			children = (
+				18A94A0F24BEE3D2004AD052 /* Coordinators */,
+				18A94A1224BEE445004AD052 /* ViewModels */,
+				18A94A1124BEE421004AD052 /* ViewControllers */,
+				18A94A1024BEE3EA004AD052 /* Views */,
+				18A94A1424BEE458004AD052 /* Networking */,
+				18A94A1324BEE44F004AD052 /* Models */,
 				18A949FB24BEE1F5004AD052 /* AppDelegate.swift */,
 				18A949FD24BEE1F5004AD052 /* SceneDelegate.swift */,
 				18A949FF24BEE1F5004AD052 /* ViewController.swift */,
-				18A94A0124BEE1F5004AD052 /* Main.storyboard */,
 				18A94A0424BEE1F8004AD052 /* Assets.xcassets */,
 				18A94A0624BEE1F8004AD052 /* LaunchScreen.storyboard */,
 				18A94A0924BEE1F8004AD052 /* Info.plist */,
 			);
 			path = "Catty Project";
+			sourceTree = "<group>";
+		};
+		18A94A0F24BEE3D2004AD052 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				18A94A1624BEE5BA004AD052 /* BaseCoordinator.swift */,
+				18A94A1524BEE5BA004AD052 /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		18A94A1024BEE3EA004AD052 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				18A94A1B24BEEC89004AD052 /* CatCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		18A94A1124BEE421004AD052 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				18A94A1924BEEC34004AD052 /* CatCollectionController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		18A94A1224BEE445004AD052 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		18A94A1324BEE44F004AD052 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				18A94A1D24BEEC9D004AD052 /* Breed.swift */,
+				18A94A2224BF1A8B004AD052 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		18A94A1424BEE458004AD052 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				18A94A2024BF0B6A004AD052 /* CatAPI.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		45A99852F05EE585CEB7590B /* Frameworks */ = {
@@ -88,7 +156,6 @@
 				4BFEAD41F213F8ECB403C826 /* Pods-Catty Project.debug.xcconfig */,
 				4B558C5B041E7F27E13F2096 /* Pods-Catty Project.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -154,7 +221,6 @@
 			files = (
 				18A94A0824BEE1F8004AD052 /* LaunchScreen.storyboard in Resources */,
 				18A94A0524BEE1F8004AD052 /* Assets.xcassets in Resources */,
-				18A94A0324BEE1F5004AD052 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,8 +273,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A94A1C24BEEC89004AD052 /* CatCell.swift in Sources */,
+				18A94A1824BEE5BA004AD052 /* BaseCoordinator.swift in Sources */,
+				18A94A1724BEE5BA004AD052 /* AppCoordinator.swift in Sources */,
+				18A94A2124BF0B6A004AD052 /* CatAPI.swift in Sources */,
 				18A94A0024BEE1F5004AD052 /* ViewController.swift in Sources */,
+				18A94A1E24BEEC9D004AD052 /* Breed.swift in Sources */,
 				18A949FC24BEE1F5004AD052 /* AppDelegate.swift in Sources */,
+				18A94A1A24BEEC34004AD052 /* CatCollectionController.swift in Sources */,
+				18A94A2324BF1A8B004AD052 /* User.swift in Sources */,
 				18A949FE24BEE1F5004AD052 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,14 +289,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		18A94A0124BEE1F5004AD052 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				18A94A0224BEE1F5004AD052 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		18A94A0624BEE1F8004AD052 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -364,7 +429,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "sergeykorshunov.Catty-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -383,7 +448,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "sergeykorshunov.Catty-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

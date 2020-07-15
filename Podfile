@@ -7,6 +7,7 @@ target 'Catty Project' do
 
   # Networking
   pod 'Alamofire'
+  pod 'AlamofireImage'
   pod 'Moya'
   pod 'Moya/RxSwift'
 

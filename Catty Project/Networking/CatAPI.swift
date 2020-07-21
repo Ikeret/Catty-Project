@@ -17,12 +17,13 @@ public enum CatAPI {
     
     case getVotes
     case vote(_ image_id: String, _ value: Int)
+    case deleteVote(_ vote_id: Int)
     
-    case getFavourites(_ page: Int = 0)
+    case getFavourites
     case markImageAsFavourite(_ image_id: String)
     case deleteImageFromFavourite(_ favourite_id: String)
     
-    case getImagesFromPage(_ page: Int = 0, _ category_id: Int = 0)
+    case getImagesFromPage(_ page: Int, _ category_id: Int, _ order: String)
     case getImage(_ image_id: String)
 }
 
@@ -37,6 +38,8 @@ extension CatAPI: TargetType {
             return "/categories"
         case .getVotes, .vote:
             return "/votes"
+        case .deleteVote(let vote_id):
+            return "/votes/\(vote_id)"
         case .getFavourites, .markImageAsFavourite:
             return "/favourites/"
         case .deleteImageFromFavourite(let favourite_id):
@@ -54,7 +57,7 @@ extension CatAPI: TargetType {
             return .get
         case .vote, .markImageAsFavourite:
             return .post
-        case .deleteImageFromFavourite:
+        case .deleteImageFromFavourite, .deleteVote:
             return .delete
         }
     }
@@ -66,20 +69,18 @@ extension CatAPI: TargetType {
     public var task: Task {
         let sub_id = User.sub_id
         switch self {
-        case .getCategoriesList:
+        case .getCategoriesList, .deleteImageFromFavourite, .deleteVote:
             return .requestPlain
         case .getVotes:
             return .requestParameters(parameters: ["sub_id": sub_id], encoding: URLEncoding.default)
         case .vote(let image_id, let value):
             return .requestParameters(parameters: ["image_id": image_id, "sub_id": sub_id, "value": value], encoding: JSONEncoding.default)
-        case .getFavourites(let page):
-            return .requestParameters(parameters: ["sub_id": sub_id, "limit": pageLimit, "page": page], encoding: URLEncoding.default)
+        case .getFavourites:
+            return .requestParameters(parameters: ["sub_id": sub_id], encoding: URLEncoding.default)
         case .markImageAsFavourite(let image_id):
             return .requestParameters(parameters: ["image_id": image_id, "sub_id": sub_id], encoding: JSONEncoding.default)
-        case .deleteImageFromFavourite(let favourite_id):
-            return .requestParameters(parameters: ["favourite_id": favourite_id], encoding: JSONEncoding.default)
-        case .getImagesFromPage(let page, let category_id):
-            var params: [String: Any] = ["size": "med", "order": "RANDOM", "limit": pageLimit, "page": page, "format": "json"]
+        case .getImagesFromPage(let page, let category_id, let order):
+            var params: [String: Any] = ["size": "full", "order": order, "limit": pageLimit, "page": page, "format": "json"]
             if category_id != 0 { params["category_ids"] = category_id }
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
         case .getImage(let image_id):

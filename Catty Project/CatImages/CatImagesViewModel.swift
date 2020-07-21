@@ -16,6 +16,7 @@ final class CatImagesViewModel {
     let title = "Cat Images"
     
     let onLoadNextPage = PublishSubject<Void>()
+    let onSettingsChanged = PublishSubject<Void>()
     
     
     let displayItems = BehaviorSubject(value: [CatCellViewModel]())
@@ -32,7 +33,6 @@ final class CatImagesViewModel {
         
         dataProvider.catImages.subscribe(onNext: { [weak self] in
             guard let strongSelf = self else { return }
-            
             strongSelf.storedItems.append(contentsOf: $0)
         
             strongSelf.displayItems.onNext(strongSelf.storedItems)
@@ -49,6 +49,13 @@ final class CatImagesViewModel {
             }
             strongSelf.storedItems.forEach { $0.favouriteId = favIds[$0.id] ?? ""; $0.isFavourite = favIds.keys.contains($0.id) }
             strongSelf.displayItems.onNext(strongSelf.storedItems)
+        }).disposed(by: disposeBag)
+        
+        onSettingsChanged.subscribe(onNext: { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.page = 0
+            strongSelf.storedItems = []
+            strongSelf.loadNextPage()
         }).disposed(by: disposeBag)
     }
     

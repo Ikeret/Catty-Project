@@ -32,8 +32,13 @@ class FavouriteCatsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = viewModel.title
-        navigationController?.navigationBar.prefersLargeTitles = true
+        collectionView.backgroundColor = .systemBackground
         setupBindigs()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func setupLayout() {
@@ -45,6 +50,12 @@ class FavouriteCatsController: UIViewController {
         collectionView.register(CatCell.self, forCellWithReuseIdentifier: CatCell.id)
         view.sv(collectionView)
         collectionView.fillContainer()
+        
+        let sortButton = UIBarButtonItem()
+        sortButton.image = UIImage(systemName: "arrow.up.arrow.down")
+        navigationItem.setRightBarButton(sortButton, animated: false)
+        
+        sortButton.rx.tap.bind(to: viewModel.onChangeSort).disposed(by: disposeBag)
     }
     
     private let disposeBag = DisposeBag()

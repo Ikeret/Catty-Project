@@ -14,7 +14,7 @@ final class CatCellViewModel {
     let image_url: URL?
     var isFavourite: Bool
     let size: CGSize
-    
+    let isFavouriteController: Bool
     var favouriteId: String
     
     var favImageName: String {
@@ -23,13 +23,13 @@ final class CatCellViewModel {
     
     let onChangeFavourite = PublishSubject<Void>()
     
-    init(id: String, image_url: String, width: Int?, height: Int?, favouriteId: String, isFavourite: Bool = false) {
+    init(id: String, image_url: String, width: Int?, height: Int?, favouriteId: String, isFavourite: Bool = false, isFavouriteController: Bool = false) {
         self.id = id
         self.image_url = URL(string: image_url)
         self.size = CGSize(width: width ?? 0, height: height ?? 0)
         self.isFavourite = isFavourite
         self.favouriteId = favouriteId
-        
+        self.isFavouriteController = isFavouriteController
         onChangeFavourite.subscribe(onNext: { [weak self] in
             guard let strongSelf = self else { return }
             

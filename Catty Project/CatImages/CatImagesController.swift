@@ -32,8 +32,14 @@ class CatImagesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = viewModel.title
-        navigationController?.navigationBar.prefersLargeTitles = true
+
+        collectionView.backgroundColor = .systemBackground
         setupBindigs()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func setupLayout() {
@@ -51,7 +57,9 @@ class CatImagesController: UIViewController {
         navigationItem.setRightBarButton(filterButton, animated: false)
         
         filterButton.rx.tap.subscribe(onNext: {
-            let filterVC = SearchFilterController(viewModel: SearchFilterViewModel())
+            let model = SearchFilterViewModel()
+            let filterVC = SearchFilterController(viewModel: model)
+            model.onSettingsChanged.bind(to: self.viewModel.onSettingsChanged).disposed(by: self.disposeBag)
             filterVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(filterVC, animated: true)
         }).disposed(by: disposeBag)

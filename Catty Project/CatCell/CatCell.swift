@@ -20,7 +20,6 @@ class CatCell: UICollectionViewCell {
     
     private let favouriteButton: UIButton
     
-    
     var disposeBag = DisposeBag()
     
     private var model: CatCellViewModel!
@@ -32,10 +31,7 @@ class CatCell: UICollectionViewCell {
         favouriteButton.isHidden = true
         shadowView.isHidden = true
         super.init(frame: frame)
-        
-        sv(catImageView, shadowView, favouriteButton)
-        shadowView.fillContainer()
-        
+        setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -50,19 +46,14 @@ class CatCell: UICollectionViewCell {
         shadowView.isHidden = true
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupLayout()
-    }
-    
     func configure(model: CatCellViewModel, showButton: Bool = true) {
         self.model = model
         
         guard let url = model.image_url else { return }
         let cellSize = contentView.bounds.size
-        let imageSize = CGSize(width: cellSize.width * UIScreen.main.scale, height: cellSize.height * UIScreen.main.scale)
         
-        catImageView.kf.setImage(with: url, options: [ .cacheOriginalImage, .onlyLoadFirstFrame, .processor(DownsamplingImageProcessor(size: imageSize))]) { [weak self] _ in
+        catImageView.kf.indicatorType = .activity
+        catImageView.kf.setImage(with: url, options: [.processor(DownsamplingImageProcessor(size: cellSize)), .scaleFactor(UIScreen.main.scale), .cacheOriginalImage]) { [weak self] _ in
             self?.favouriteButton.isHidden = !showButton
             self?.shadowView.isHidden = !showButton
         }
@@ -75,6 +66,13 @@ class CatCell: UICollectionViewCell {
     }
     
     private func setupLayout() {
+        sv(catImageView, shadowView, favouriteButton)
+        shadowView.fillContainer()
+        
+        backgroundColor = .systemBackground
+        shadowView.layer.cornerRadius = 10
+        shadowView.clipsToBounds = true
+        
         catImageView.fillContainer()
         
         catImageView.contentMode = .scaleAspectFill
@@ -85,7 +83,7 @@ class CatCell: UICollectionViewCell {
             5
         )
         
-        favouriteButton.size(50)
+        favouriteButton.height(50).width(55)
         favouriteButton.tintColor = .systemPink
         favouriteButton.clipsToBounds = true
         favouriteButton.subviews.first?.contentMode = .scaleAspectFit
@@ -97,6 +95,13 @@ class CatCell: UICollectionViewCell {
             guard let strongSelf = self else { return }
             let heartImage = UIImage(systemName: strongSelf.model.favImageName)
             strongSelf.favouriteButton.setBackgroundImage(heartImage, for: .normal)
+            if strongSelf.model.isFavouriteController {
+//                strongSelf.catImageView.kf.setImage(with: URL(string: ""), options: [])
+                UIView.animate(withDuration: 0.5) {
+//                    strongSelf.favouriteButton.isHidden = true
+//                    strongSelf.shadowView.isHidden = true
+                }
+            }
         }).disposed(by: disposeBag)
     }
 }

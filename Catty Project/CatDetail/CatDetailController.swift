@@ -51,7 +51,6 @@ class CatDetailController: UIViewController {
         super.loadView()
         setupLayout()
         view.backgroundColor = .systemBackground
-        navigationController?.navigationBar.isTranslucent = true
     }
     
     override func viewDidLoad() {
@@ -59,9 +58,13 @@ class CatDetailController: UIViewController {
         setupBindings()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     private func setupLayout() {
-        imageView.kf.setImage(with: viewModel.image_url)
         imageView.kf.indicatorType = .activity
+        imageView.kf.setImage(with: viewModel.image_url)
         
         let imageHeight: CGFloat = min(viewModel.imageHeight, view.bounds.height - 150)
         scrollView.contentInset = UIEdgeInsets(top: imageHeight, left: 0, bottom: 0, right: 0)

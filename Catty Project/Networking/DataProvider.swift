@@ -25,7 +25,7 @@ final class DataProvider {
     
     func loadCatImages(page: Int = 0, category: Int = 0) {
         
-        provider.rx.request(.getImagesFromPage(page, category, "ASC"))
+        provider.rx.request(.getImagesFromPage(page))
             .map([CatImage].self)
             .subscribe(onSuccess: { [weak self] catImages in
                 // prefetch images
@@ -117,7 +117,9 @@ final class DataProvider {
         return Observable.create { [provider] observer in
             provider.rx.request(.getCategoriesList)
                 .map([Category].self).subscribe(onSuccess: {
-                    observer.onNext($0)
+                    var categories = $0
+                    categories.insert(Category(id: 0, name: "All"), at: 0)
+                    observer.onNext(categories)
                 })
         }
     }

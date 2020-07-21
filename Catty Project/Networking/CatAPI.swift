@@ -23,7 +23,7 @@ public enum CatAPI {
     case markImageAsFavourite(_ image_id: String)
     case deleteImageFromFavourite(_ favourite_id: String)
     
-    case getImagesFromPage(_ page: Int, _ category_id: Int, _ order: String)
+    case getImagesFromPage(_ page: Int)
     case getImage(_ image_id: String)
 }
 
@@ -79,9 +79,10 @@ extension CatAPI: TargetType {
             return .requestParameters(parameters: ["sub_id": sub_id], encoding: URLEncoding.default)
         case .markImageAsFavourite(let image_id):
             return .requestParameters(parameters: ["image_id": image_id, "sub_id": sub_id], encoding: JSONEncoding.default)
-        case .getImagesFromPage(let page, let category_id, let order):
-            var params: [String: Any] = ["size": "full", "order": order, "limit": pageLimit, "page": page, "format": "json"]
-            if category_id != 0 { params["category_ids"] = category_id }
+        case .getImagesFromPage(let page):
+            var params: [String: Any] = ["size": "full", "order": User.sorting, "limit": pageLimit, "page": page, "format": "json"]
+            if User.categoryId != 0 { params["category_ids"] = User.categoryId }
+            if User.onlyGif { params["mime_types"] = "gif" }
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
         case .getImage(let image_id):
             return .requestParameters(parameters: ["image_id": image_id], encoding: URLEncoding.default)

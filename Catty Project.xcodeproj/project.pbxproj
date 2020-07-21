@@ -53,7 +53,7 @@
 		18A94A1624BEE5BA004AD052 /* BaseCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		18A94A1924BEEC34004AD052 /* CatImagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatImagesController.swift; sourceTree = "<group>"; };
 		18A94A1B24BEEC89004AD052 /* CatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCell.swift; sourceTree = "<group>"; };
-		18A94A1F24BEED4E004AD052 /* ТЗ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "ТЗ.md"; sourceTree = "<group>"; };
+		18A94A1F24BEED4E004AD052 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		18A94A2024BF0B6A004AD052 /* CatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPI.swift; sourceTree = "<group>"; };
 		18A94A2224BF1A8B004AD052 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		18FA510F24C5BF89000FAC5F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 		18A949EF24BEE1F5004AD052 = {
 			isa = PBXGroup;
 			children = (
-				18A94A1F24BEED4E004AD052 /* ТЗ.md */,
+				18A94A1F24BEED4E004AD052 /* README.md */,
 				18A949FA24BEE1F5004AD052 /* Catty Project */,
 				18A949F924BEE1F5004AD052 /* Products */,
 				921CD557D2F2C65A46EDD736 /* Pods */,

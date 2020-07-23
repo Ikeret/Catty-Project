@@ -14,17 +14,16 @@ import Kingfisher
 
 class CatCell: UICollectionViewCell {
     static let id = "CatCell"
-    
+
     private let catImageView: UIImageView
     private let shadowView = UIImageView(image: UIImage(named: "Shadow"))
-    
+
     private let favouriteButton: UIButton
-    
+
     var disposeBag = DisposeBag()
-    
+
     private var model: CatCellViewModel!
-    
-    
+
     override init(frame: CGRect) {
         catImageView = UIImageView()
         favouriteButton = UIButton()
@@ -33,11 +32,11 @@ class CatCell: UICollectionViewCell {
         super.init(frame: frame)
         setupLayout()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         disposeBag = DisposeBag()
@@ -45,36 +44,38 @@ class CatCell: UICollectionViewCell {
         favouriteButton.isHidden = true
         shadowView.isHidden = true
     }
-    
+
     func configure(model: CatCellViewModel, showButton: Bool = true) {
         self.model = model
-        
+
         guard let url = model.image_url else { return }
         let cellSize = contentView.bounds.size
-        
+
         catImageView.kf.indicatorType = .activity
-        catImageView.kf.setImage(with: url, options: [.processor(DownsamplingImageProcessor(size: cellSize)), .scaleFactor(UIScreen.main.scale), .cacheOriginalImage]) { [weak self] _ in
+        catImageView.kf.setImage(with: url, options: [
+                                    .processor(DownsamplingImageProcessor(size: cellSize)),
+                                    .scaleFactor(UIScreen.main.scale), .cacheOriginalImage,
+                                    .originalCache(.default)]) { [weak self] _ in
             self?.favouriteButton.isHidden = !showButton
             self?.shadowView.isHidden = !showButton
         }
-        
+
         let heartImage = UIImage(systemName: model.favImageName)
         favouriteButton.setBackgroundImage(heartImage, for: .normal)
-        
-        
+
         setupBindings()
     }
-    
+
     private func setupLayout() {
         sv(catImageView, shadowView, favouriteButton)
         shadowView.fillContainer()
-        
+
         backgroundColor = .systemBackground
         shadowView.layer.cornerRadius = 10
         shadowView.clipsToBounds = true
-        
+
         catImageView.fillContainer()
-        
+
         catImageView.contentMode = .scaleAspectFill
         catImageView.layer.cornerRadius = 10
         catImageView.clipsToBounds = true
@@ -82,26 +83,19 @@ class CatCell: UICollectionViewCell {
             favouriteButton-5-|,
             5
         )
-        
+
         favouriteButton.height(50).width(55)
         favouriteButton.tintColor = .systemPink
         favouriteButton.clipsToBounds = true
         favouriteButton.subviews.first?.contentMode = .scaleAspectFit
     }
-    
+
     private func setupBindings() {
         favouriteButton.rx.tap.bind(to: model.onChangeFavourite).disposed(by: disposeBag)
         favouriteButton.rx.tap.subscribe(onNext: { [weak self] in
             guard let strongSelf = self else { return }
             let heartImage = UIImage(systemName: strongSelf.model.favImageName)
             strongSelf.favouriteButton.setBackgroundImage(heartImage, for: .normal)
-            if strongSelf.model.isFavouriteController {
-//                strongSelf.catImageView.kf.setImage(with: URL(string: ""), options: [])
-                UIView.animate(withDuration: 0.5) {
-//                    strongSelf.favouriteButton.isHidden = true
-//                    strongSelf.shadowView.isHidden = true
-                }
-            }
         }).disposed(by: disposeBag)
     }
 }

@@ -11,55 +11,70 @@ import RxSwift
 import Stevia
 
 class SearchFilterController: UIViewController {
-    
+
     let viewModel: SearchFilterViewModel
-    
-    let tableView = {
-        $0.style { $0.separatorStyle = .none; $0.tableFooterView = UIView(); $0.bounces = false; $0.register(SearchCategoryCell.self, forCellReuseIdentifier: SearchCategoryCell.id)}
-    }(UITableView())
-    
+
+    let tableView = UITableView().style {
+            $0.separatorStyle = .none
+            $0.tableFooterView = UIView()
+            $0.bounces = false
+            $0.register(SearchCategoryCell.self, forCellReuseIdentifier: SearchCategoryCell.id)
+        }
+
     let sortTypes = ["RANDOM", "ASC", "DESC"]
-    
-    let sortControl = { $0.style {
+
+    let sortControl = UISegmentedControl().style {
         $0.insertSegment(withTitle: "RANDOM", at: 0, animated: false)
         $0.insertSegment(withTitle: "ASC", at: 1, animated: false)
         $0.insertSegment(withTitle: "DESC", at: 2, animated: false)
         $0.selectedSegmentIndex = 0
-        } }(UISegmentedControl())
-        
+    }
+
     let gifSwitcher = UISwitch()
-    
-    let applyButton = {
-        $0.style { $0.backgroundColor = .systemBlue; $0.setTitle("Apply", for: .normal); $0.setTitleColor(.white, for: .normal); $0.layer.cornerRadius = 15; $0.height(44) }
-    }(UIButton())
-    
+
+    let applyButton = UIButton().style {
+        $0.backgroundColor = .systemBlue
+        $0.setTitle("Apply", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.layer.cornerRadius = 15
+        $0.height(44)
+    }
+
     init(viewModel: SearchFilterViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func loadView() {
         super.loadView()
         setupLayout()
-        
+
         view.backgroundColor = .systemBackground
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = viewModel.title
         setupBindigns()
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+
     private func setupLayout() {
         let sortLabel = UILabel().style { $0.text = "Sorted by:" }
         let gifLabel = UILabel().style { $0.text = "Only animated images" }
-        let categoryLabel = UILabel().style { $0.text = "Categories"; $0.font = UIFont.systemFont(ofSize: 20, weight: .medium) }
-        
+        let categoryLabel = UILabel().style {
+            $0.text = "Categories"
+            $0.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        }
+
         let sortView = UIStackView(arrangedSubviews: [sortLabel, sortControl]).style {
             $0.axis = .horizontal
             $0.distribution = .fill
@@ -70,9 +85,9 @@ class SearchFilterController: UIViewController {
         }
 
         view.sv(tableView, categoryLabel, sortView, gifView, applyButton)
-        
+
         view.layout(
-            175,
+            120,
             |-16-sortView-16-|,
             32,
             |-16-gifView-16-|,
@@ -85,38 +100,41 @@ class SearchFilterController: UIViewController {
             40
         )
     }
-    
+
     let disposeBag = DisposeBag()
-    
+
     private func setupBindigns() {
         sortControl.selectedSegmentIndex = sortTypes.firstIndex(of: viewModel.sorting) ?? 0
         gifSwitcher.isOn = viewModel.onlyGif
-        
-        viewModel.categories.bind(to: tableView.rx.items(cellIdentifier: SearchCategoryCell.id, cellType: SearchCategoryCell.self)) { row, model, cell in
+
+        viewModel.categories.bind(to: tableView.rx.items(cellIdentifier: SearchCategoryCell.id,
+                                                         cellType: SearchCategoryCell.self))
+        { _, model, cell in
             cell.titleLabel.text = model.name.capitalized
             cell.selectionStyle = .none
             cell.categoryId = model.id
         }.disposed(by: disposeBag)
-        
+
         tableView.rx.willDisplayCell.subscribe(onNext: { [weak self] in
             guard let strongSelf = self else { return }
-            let cell = $0.cell as! SearchCategoryCell
-            if cell.categoryId == strongSelf.viewModel.categoryId {
-                strongSelf.tableView.selectRow(at: $0.indexPath, animated: true, scrollPosition: .none)
+            if let cell = $0.cell as? SearchCategoryCell {
+                if cell.categoryId == strongSelf.viewModel.categoryId {
+                    strongSelf.tableView.selectRow(at: $0.indexPath, animated: true, scrollPosition: .none)
+                }
             }
             }).disposed(by: disposeBag)
-        
+
         tableView.rx.modelSelected(Category.self).bind(to: viewModel.selectedCategory).disposed(by: disposeBag)
-        
+
         sortControl.rx.selectedSegmentIndex.skip(1).subscribe(onNext: { [weak self] in
             guard let strongSelf = self else { return }
             self?.viewModel.selectedSort.onNext(strongSelf.sortTypes[$0])
         }).disposed(by: disposeBag)
-        
+
         gifSwitcher.rx.isOn.skip(1).subscribe(onNext: { [weak self] in
             self?.viewModel.gifIsOn.onNext($0)
         }).disposed(by: disposeBag)
-        
+
         applyButton.rx.tap.bind(to: viewModel.onApplySettings).disposed(by: disposeBag)
         applyButton.rx.tap.subscribe(onNext: { [weak self] in
             self?.navigationController?.popViewController(animated: true)

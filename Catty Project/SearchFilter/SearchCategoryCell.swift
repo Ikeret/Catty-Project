@@ -12,15 +12,15 @@ import Stevia
 class SearchCategoryCell: UITableViewCell {
     static let id = "CategoryCell"
     var categoryId: Int = -1
-    
+
     let titleLabel: UILabel
     let selectedView: UIView
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         titleLabel = UILabel().style { $0.font = UIFont.systemFont(ofSize: 18, weight: .medium) }
         selectedView = UIView().style { $0.layer.masksToBounds = true; $0.layer.cornerRadius = 10 }
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+
         sv(selectedView.sv(titleLabel))
         selectedView.fillContainer(5)
         selectedView.layout(
@@ -29,7 +29,7 @@ class SearchCategoryCell: UITableViewCell {
             0
         )
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

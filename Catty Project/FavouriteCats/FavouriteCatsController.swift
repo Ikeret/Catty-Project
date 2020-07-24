@@ -19,7 +19,7 @@ class FavouriteCatsController: UIViewController {
 
     let viewModel: FavouriteCatsViewModel
 
-    init(viewModel: FavouriteCatsViewModel) {
+    init(viewModel: FavouriteCatsViewModel = FavouriteCatsViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

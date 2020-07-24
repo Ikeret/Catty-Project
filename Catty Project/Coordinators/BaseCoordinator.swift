@@ -10,7 +10,7 @@ import RxSwift
 import Foundation
 
 enum CoordinationResult {
-	case success(Any?)
+	case success(Bool)
 	case cancel
 }
 

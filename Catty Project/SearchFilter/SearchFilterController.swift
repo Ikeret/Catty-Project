@@ -40,7 +40,7 @@ class SearchFilterController: UIViewController {
         $0.height(44)
     }
 
-    init(viewModel: SearchFilterViewModel) {
+    init(_ viewModel: SearchFilterViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

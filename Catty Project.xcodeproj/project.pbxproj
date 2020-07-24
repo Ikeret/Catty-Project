@@ -12,6 +12,8 @@
 		1863CDE824C3941000D0E33D /* FavouriteCatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863CDE724C3940F00D0E33D /* FavouriteCatsController.swift */; };
 		1863CDEA24C3948B00D0E33D /* FavouriteCatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863CDE924C3948B00D0E33D /* FavouriteCatsViewModel.swift */; };
 		187D0BC524C9BB2E006FC6BA /* CatCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187D0BC424C9BB2E006FC6BA /* CatCollectionView.swift */; };
+		189A2F6424CAD2840014687E /* CatAnalysisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189A2F6324CAD2840014687E /* CatAnalysisViewModel.swift */; };
+		189A2F6624CAD2B70014687E /* CatAnalysisController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189A2F6524CAD2B70014687E /* CatAnalysisController.swift */; };
 		18A949FC24BEE1F5004AD052 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A949FB24BEE1F5004AD052 /* AppDelegate.swift */; };
 		18A949FE24BEE1F5004AD052 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A949FD24BEE1F5004AD052 /* SceneDelegate.swift */; };
 		18A94A0524BEE1F8004AD052 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A94A0424BEE1F8004AD052 /* Assets.xcassets */; };
@@ -22,6 +24,13 @@
 		18A94A1C24BEEC89004AD052 /* CatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A94A1B24BEEC89004AD052 /* CatCell.swift */; };
 		18A94A2124BF0B6A004AD052 /* CatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A94A2024BF0B6A004AD052 /* CatAPI.swift */; };
 		18A94A2324BF1A8B004AD052 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A94A2224BF1A8B004AD052 /* User.swift */; };
+		18DF4D9824CAD43F008A344F /* CatAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4D9724CAD43F008A344F /* CatAnalysis.swift */; };
+		18DF4D9A24CB0FB4008A344F /* CatImagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4D9924CB0FB4008A344F /* CatImagesCoordinator.swift */; };
+		18DF4D9C24CB0FD3008A344F /* SearchFilterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4D9B24CB0FD3008A344F /* SearchFilterCoordinator.swift */; };
+		18DF4D9E24CB0FED008A344F /* FavouriteCatsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4D9D24CB0FED008A344F /* FavouriteCatsCoordinator.swift */; };
+		18DF4DA024CB1003008A344F /* CatDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4D9F24CB1003008A344F /* CatDetailCoordinator.swift */; };
+		18DF4DA224CB102C008A344F /* MyUploadsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4DA124CB102C008A344F /* MyUploadsCoordinator.swift */; };
+		18DF4DA424CB1045008A344F /* CatAnalysisCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4DA324CB1045008A344F /* CatAnalysisCoordinator.swift */; };
 		18FA511024C5BF89000FAC5F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA510F24C5BF89000FAC5F /* Category.swift */; };
 		18FA511224C72017000FAC5F /* SearchCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA511124C72017000FAC5F /* SearchCategoryCell.swift */; };
 		18FA511424C823FA000FAC5F /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA511324C823FA000FAC5F /* UIBarButtonItemExtension.swift */; };
@@ -42,7 +51,7 @@
 		18FBF86E24C59ADA0013178E /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FBF86D24C59AD90013178E /* Vote.swift */; };
 		18FBF87024C5BD920013178E /* SearchFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FBF86F24C5BD920013178E /* SearchFilterController.swift */; };
 		18FBF87324C5BE0F0013178E /* SearchFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FBF87224C5BE0F0013178E /* SearchFilterViewModel.swift */; };
-		D6F3F52DCA3773B4DEA08B4B /* Pods_Catty_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0D39918503D51F2F26D1BF2 /* Pods_Catty_Project.framework */; };
+		6547931B82A2B18F5F12E94F /* Pods_Catty_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A463FC14F2E9F510CAFA742B /* Pods_Catty_Project.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +60,8 @@
 		1863CDE724C3940F00D0E33D /* FavouriteCatsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCatsController.swift; sourceTree = "<group>"; };
 		1863CDE924C3948B00D0E33D /* FavouriteCatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCatsViewModel.swift; sourceTree = "<group>"; };
 		187D0BC424C9BB2E006FC6BA /* CatCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCollectionView.swift; sourceTree = "<group>"; };
+		189A2F6324CAD2840014687E /* CatAnalysisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAnalysisViewModel.swift; sourceTree = "<group>"; };
+		189A2F6524CAD2B70014687E /* CatAnalysisController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAnalysisController.swift; sourceTree = "<group>"; };
 		18A949F824BEE1F5004AD052 /* Catty Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Catty Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A949FB24BEE1F5004AD052 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18A949FD24BEE1F5004AD052 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +75,13 @@
 		18A94A1F24BEED4E004AD052 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		18A94A2024BF0B6A004AD052 /* CatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPI.swift; sourceTree = "<group>"; };
 		18A94A2224BF1A8B004AD052 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		18DF4D9724CAD43F008A344F /* CatAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAnalysis.swift; sourceTree = "<group>"; };
+		18DF4D9924CB0FB4008A344F /* CatImagesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatImagesCoordinator.swift; sourceTree = "<group>"; };
+		18DF4D9B24CB0FD3008A344F /* SearchFilterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterCoordinator.swift; sourceTree = "<group>"; };
+		18DF4D9D24CB0FED008A344F /* FavouriteCatsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCatsCoordinator.swift; sourceTree = "<group>"; };
+		18DF4D9F24CB1003008A344F /* CatDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailCoordinator.swift; sourceTree = "<group>"; };
+		18DF4DA124CB102C008A344F /* MyUploadsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUploadsCoordinator.swift; sourceTree = "<group>"; };
+		18DF4DA324CB1045008A344F /* CatAnalysisCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAnalysisCoordinator.swift; sourceTree = "<group>"; };
 		18FA510F24C5BF89000FAC5F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		18FA511124C72017000FAC5F /* SearchCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryCell.swift; sourceTree = "<group>"; };
 		18FA511324C823FA000FAC5F /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
@@ -84,9 +102,9 @@
 		18FBF86D24C59AD90013178E /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
 		18FBF86F24C5BD920013178E /* SearchFilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterController.swift; sourceTree = "<group>"; };
 		18FBF87224C5BE0F0013178E /* SearchFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterViewModel.swift; sourceTree = "<group>"; };
-		45BF0CBD1D04BCBDAFBBD3A8 /* Pods-Catty Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catty Project.debug.xcconfig"; path = "Target Support Files/Pods-Catty Project/Pods-Catty Project.debug.xcconfig"; sourceTree = "<group>"; };
-		4E1A0388A891F2CF94DDED48 /* Pods-Catty Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catty Project.release.xcconfig"; path = "Target Support Files/Pods-Catty Project/Pods-Catty Project.release.xcconfig"; sourceTree = "<group>"; };
-		A0D39918503D51F2F26D1BF2 /* Pods_Catty_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catty_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A463FC14F2E9F510CAFA742B /* Pods_Catty_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catty_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1FD99239C94D983A58068D5 /* Pods-Catty Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catty Project.debug.xcconfig"; path = "Target Support Files/Pods-Catty Project/Pods-Catty Project.debug.xcconfig"; sourceTree = "<group>"; };
+		D1990AA763D71746B2C134DF /* Pods-Catty Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catty Project.release.xcconfig"; path = "Target Support Files/Pods-Catty Project/Pods-Catty Project.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,27 +112,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6F3F52DCA3773B4DEA08B4B /* Pods_Catty_Project.framework in Frameworks */,
+				6547931B82A2B18F5F12E94F /* Pods_Catty_Project.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04B9075F78A7476118C88E45 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A0D39918503D51F2F26D1BF2 /* Pods_Catty_Project.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		1863CDEB24C48B0100D0E33D /* CatImages */ = {
 			isa = PBXGroup;
 			children = (
+				18DF4D9924CB0FB4008A344F /* CatImagesCoordinator.swift */,
 				18FB5FD424BFAF1E00F579F6 /* CatImagesViewModel.swift */,
 				18A94A1924BEEC34004AD052 /* CatImagesController.swift */,
-				187D0BC424C9BB2E006FC6BA /* CatCollectionView.swift */,
 			);
 			path = CatImages;
 			sourceTree = "<group>";
@@ -122,6 +132,7 @@
 		1863CDEC24C48B0D00D0E33D /* CatDetail */ = {
 			isa = PBXGroup;
 			children = (
+				18DF4D9F24CB1003008A344F /* CatDetailCoordinator.swift */,
 				1863CDE524C1D30F00D0E33D /* CatDetailViewModel.swift */,
 				1863CDE324C1D23200D0E33D /* CatDetailController.swift */,
 				18FBF86B24C507D80013178E /* DetailRowView.swift */,
@@ -132,10 +143,21 @@
 		1863CDED24C48B1C00D0E33D /* FavouriteCats */ = {
 			isa = PBXGroup;
 			children = (
+				18DF4D9D24CB0FED008A344F /* FavouriteCatsCoordinator.swift */,
 				1863CDE924C3948B00D0E33D /* FavouriteCatsViewModel.swift */,
 				1863CDE724C3940F00D0E33D /* FavouriteCatsController.swift */,
 			);
 			path = FavouriteCats;
+			sourceTree = "<group>";
+		};
+		189A2F6224CAD0430014687E /* CatAnalysis */ = {
+			isa = PBXGroup;
+			children = (
+				18DF4DA324CB1045008A344F /* CatAnalysisCoordinator.swift */,
+				189A2F6324CAD2840014687E /* CatAnalysisViewModel.swift */,
+				189A2F6524CAD2B70014687E /* CatAnalysisController.swift */,
+			);
+			path = CatAnalysis;
 			sourceTree = "<group>";
 		};
 		18A949EF24BEE1F5004AD052 = {
@@ -145,7 +167,7 @@
 				18A949FA24BEE1F5004AD052 /* Catty Project */,
 				18A949F924BEE1F5004AD052 /* Products */,
 				921CD557D2F2C65A46EDD736 /* Pods */,
-				04B9075F78A7476118C88E45 /* Frameworks */,
+				A05C5F38C37A8CFFA93BFA19 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,12 +183,13 @@
 			isa = PBXGroup;
 			children = (
 				18A94A0F24BEE3D2004AD052 /* Coordinators */,
+				18A94A1024BEE3EA004AD052 /* CatCollection */,
 				1863CDEB24C48B0100D0E33D /* CatImages */,
 				18FBF87124C5BDBA0013178E /* SearchFilter */,
 				1863CDED24C48B1C00D0E33D /* FavouriteCats */,
-				18FA511524C83466000FAC5F /* MyUploads */,
 				1863CDEC24C48B0D00D0E33D /* CatDetail */,
-				18A94A1024BEE3EA004AD052 /* CatCell */,
+				18FA511524C83466000FAC5F /* MyUploads */,
+				189A2F6224CAD0430014687E /* CatAnalysis */,
 				18A94A1424BEE458004AD052 /* Networking */,
 				18A94A1324BEE44F004AD052 /* Models */,
 				18FA511C24C852FE000FAC5F /* Login */,
@@ -191,13 +214,14 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
-		18A94A1024BEE3EA004AD052 /* CatCell */ = {
+		18A94A1024BEE3EA004AD052 /* CatCollection */ = {
 			isa = PBXGroup;
 			children = (
+				187D0BC424C9BB2E006FC6BA /* CatCollectionView.swift */,
 				18FBF86724C48C190013178E /* CatCellViewModel.swift */,
 				18A94A1B24BEEC89004AD052 /* CatCell.swift */,
 			);
-			path = CatCell;
+			path = CatCollection;
 			sourceTree = "<group>";
 		};
 		18A94A1324BEE44F004AD052 /* Models */ = {
@@ -209,6 +233,7 @@
 				18FBF86924C49A050013178E /* CatDetail.swift */,
 				18FBF86D24C59AD90013178E /* Vote.swift */,
 				18FA510F24C5BF89000FAC5F /* Category.swift */,
+				18DF4D9724CAD43F008A344F /* CatAnalysis.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -226,6 +251,7 @@
 		18FA511524C83466000FAC5F /* MyUploads */ = {
 			isa = PBXGroup;
 			children = (
+				18DF4DA124CB102C008A344F /* MyUploadsCoordinator.swift */,
 				18FA511624C834DF000FAC5F /* MyUploadsViewModel.swift */,
 				18FA511824C8351B000FAC5F /* MyUploadsController.swift */,
 			);
@@ -252,6 +278,7 @@
 		18FBF87124C5BDBA0013178E /* SearchFilter */ = {
 			isa = PBXGroup;
 			children = (
+				18DF4D9B24CB0FD3008A344F /* SearchFilterCoordinator.swift */,
 				18FBF87224C5BE0F0013178E /* SearchFilterViewModel.swift */,
 				18FBF86F24C5BD920013178E /* SearchFilterController.swift */,
 				18FA511124C72017000FAC5F /* SearchCategoryCell.swift */,
@@ -262,10 +289,18 @@
 		921CD557D2F2C65A46EDD736 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				45BF0CBD1D04BCBDAFBBD3A8 /* Pods-Catty Project.debug.xcconfig */,
-				4E1A0388A891F2CF94DDED48 /* Pods-Catty Project.release.xcconfig */,
+				B1FD99239C94D983A58068D5 /* Pods-Catty Project.debug.xcconfig */,
+				D1990AA763D71746B2C134DF /* Pods-Catty Project.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A05C5F38C37A8CFFA93BFA19 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A463FC14F2E9F510CAFA742B /* Pods_Catty_Project.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,12 +310,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18A94A0C24BEE1F8004AD052 /* Build configuration list for PBXNativeTarget "Catty Project" */;
 			buildPhases = (
-				58C120874CDE95EDC368923B /* [CP] Check Pods Manifest.lock */,
+				A91F447DBD27A75B4A2BA87C /* [CP] Check Pods Manifest.lock */,
 				18A949F424BEE1F5004AD052 /* Sources */,
 				18A949F524BEE1F5004AD052 /* Frameworks */,
 				18A949F624BEE1F5004AD052 /* Resources */,
-				B54BB4B157F0C38FAC324E77 /* [CP] Embed Pods Frameworks */,
-				187D0BC824C9CC08006FC6BA /* ShellScript */,
+				DD4D570D45940C115D3CE5AF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -337,24 +371,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		187D0BC824C9CC08006FC6BA /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint autocorrect\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		58C120874CDE95EDC368923B /* [CP] Check Pods Manifest.lock */ = {
+		A91F447DBD27A75B4A2BA87C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -376,7 +393,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B54BB4B157F0C38FAC324E77 /* [CP] Embed Pods Frameworks */ = {
+		DD4D570D45940C115D3CE5AF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -408,23 +425,32 @@
 				18FB5FD324BF948100F579F6 /* CatImage.swift in Sources */,
 				1863CDE424C1D23200D0E33D /* CatDetailController.swift in Sources */,
 				1863CDE624C1D30F00D0E33D /* CatDetailViewModel.swift in Sources */,
+				189A2F6424CAD2840014687E /* CatAnalysisViewModel.swift in Sources */,
 				18FBF87324C5BE0F0013178E /* SearchFilterViewModel.swift in Sources */,
 				18A94A1724BEE5BA004AD052 /* AppCoordinator.swift in Sources */,
 				18FB5FD724C02A7F00F579F6 /* LoginCoordinator.swift in Sources */,
+				18DF4DA024CB1003008A344F /* CatDetailCoordinator.swift in Sources */,
 				18A94A2124BF0B6A004AD052 /* CatAPI.swift in Sources */,
 				18FA511924C8351B000FAC5F /* MyUploadsController.swift in Sources */,
+				18DF4DA424CB1045008A344F /* CatAnalysisCoordinator.swift in Sources */,
 				18FBF87024C5BD920013178E /* SearchFilterController.swift in Sources */,
+				18DF4D9E24CB0FED008A344F /* FavouriteCatsCoordinator.swift in Sources */,
 				18FBF86A24C49A050013178E /* CatDetail.swift in Sources */,
 				1863CDEA24C3948B00D0E33D /* FavouriteCatsViewModel.swift in Sources */,
 				18FB5FDF24C0703E00F579F6 /* FavouriteImage.swift in Sources */,
+				18DF4D9C24CB0FD3008A344F /* SearchFilterCoordinator.swift in Sources */,
+				18DF4DA224CB102C008A344F /* MyUploadsCoordinator.swift in Sources */,
 				18FA511B24C84202000FAC5F /* UploadProvider.swift in Sources */,
 				18A949FC24BEE1F5004AD052 /* AppDelegate.swift in Sources */,
 				18FBF86824C48C190013178E /* CatCellViewModel.swift in Sources */,
 				18FA511024C5BF89000FAC5F /* Category.swift in Sources */,
 				18FA512124C85337000FAC5F /* LoginViewModel.swift in Sources */,
 				18FA511224C72017000FAC5F /* SearchCategoryCell.swift in Sources */,
+				18DF4D9824CAD43F008A344F /* CatAnalysis.swift in Sources */,
 				18A94A1A24BEEC34004AD052 /* CatImagesController.swift in Sources */,
+				189A2F6624CAD2B70014687E /* CatAnalysisController.swift in Sources */,
 				18FB5FD924C02ADA00F579F6 /* TabBarCoordinator.swift in Sources */,
+				18DF4D9A24CB0FB4008A344F /* CatImagesCoordinator.swift in Sources */,
 				18FA511424C823FA000FAC5F /* UIBarButtonItemExtension.swift in Sources */,
 				18FB5FD524BFAF1E00F579F6 /* CatImagesViewModel.swift in Sources */,
 				18FB5FDC24C0332F00F579F6 /* DataProvider.swift in Sources */,
@@ -566,7 +592,7 @@
 		};
 		18A94A0D24BEE1F8004AD052 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45BF0CBD1D04BCBDAFBBD3A8 /* Pods-Catty Project.debug.xcconfig */;
+			baseConfigurationReference = B1FD99239C94D983A58068D5 /* Pods-Catty Project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -585,7 +611,7 @@
 		};
 		18A94A0E24BEE1F8004AD052 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E1A0388A891F2CF94DDED48 /* Pods-Catty Project.release.xcconfig */;
+			baseConfigurationReference = D1990AA763D71746B2C134DF /* Pods-Catty Project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

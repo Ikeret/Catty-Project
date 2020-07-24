@@ -29,7 +29,7 @@ class MyUploadsController: UIViewController, UINavigationControllerDelegate {
 
     private let cameraButton = UIBarButtonItem().style { $0.image = UIImage(systemName: "camera") }
 
-    init(viewModel: MyUploadsViewModel) {
+    init(viewModel: MyUploadsViewModel = MyUploadsViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -77,11 +77,6 @@ class MyUploadsController: UIViewController, UINavigationControllerDelegate {
             self?.present(picker, animated: true)
         }).disposed(by: disposeBag)
 
-        viewModel.onFileLoaded.subscribe(onNext: { [weak self] _ in
-            guard let indicator = self?.activityIndicator else { return }
-            indicator.stopAnimating()
-        }).disposed(by: disposeBag)
-
         viewModel.displayItems.bind(to: collectionView.rx.items(cellIdentifier: CatCell.id,
                                                                 cellType: CatCell.self)) { _, model, cell in
             cell.configure(viewModel: model, showButton: false)
@@ -101,13 +96,22 @@ class MyUploadsController: UIViewController, UINavigationControllerDelegate {
         viewModel.onFileLoaded.subscribe(onNext: { [weak self] in
             self?.cameraButton.isEnabled = true
             self?.libraryButton.isEnabled = true
+            self?.activityIndicator.stopAnimating()
             if $0.success {
                 self?.collectionView.setContentOffset(CGPoint.zero, animated: true)
             } else {
-                let alert = UIAlertController(title: "Error", message: $0.message, preferredStyle: .alert)
+                let alert = UIAlertController(title: "Image Rejected", message: $0.message, preferredStyle: .alert)
                 alert.addAction(.init(title: "Ok", style: .default, handler: nil))
                 self?.present(alert, animated: true)
             }
+        }).disposed(by: disposeBag)
+        
+        collectionView.rx.modelSelected(CatCellViewModel.self).subscribe(onNext: { [weak self] in
+            let catAnalysisVC = CatAnalysisController(viewModel:
+                CatAnalysisViewModel(image_id: $0.id, image_url: $0.image_url)
+            )
+            catAnalysisVC.hidesBottomBarWhenPushed = true
+            self?.navigationController?.pushViewController(catAnalysisVC, animated: true)
         }).disposed(by: disposeBag)
 
         collectionView.rx.setDelegate(self).disposed(by: disposeBag)

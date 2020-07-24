@@ -9,7 +9,7 @@
 import Moya
 import Foundation
 
-private let x_api_key = "f89e1171-9b7f-4923-81b2-4b014e783057"
+fileprivate let x_api_key = "f89e1171-9b7f-4923-81b2-4b014e783057"
 private let pageLimit = 50
 
 public enum CatAPI {
@@ -29,6 +29,7 @@ public enum CatAPI {
     case getUploadedImages(_ page: Int)
     case uploadImageFromURL(_ url: URL)
     case deleteUploadedImage(_ image_id: String)
+    case getImageAnalysis(_ image_id: String)
 }
 
 extension CatAPI: TargetType {
@@ -58,12 +59,14 @@ extension CatAPI: TargetType {
             return "/images/upload"
         case .deleteUploadedImage(let image_id):
             return "/images/\(image_id)"
+        case .getImageAnalysis(let image_id):
+            return "images/\(image_id)/analysis"
         }
     }
 
     public var method: Moya.Method {
         switch self {
-        case .getCategoriesList, .getVotes, .getFavourites, .getImage, .getImagesFromPage, .getUploadedImages:
+        case .getCategoriesList, .getVotes, .getFavourites, .getImage, .getImagesFromPage, .getUploadedImages, .getImageAnalysis:
             return .get
         case .vote, .markImageAsFavourite, .uploadImageFromURL:
             return .post
@@ -79,7 +82,7 @@ extension CatAPI: TargetType {
     public var task: Task {
         let sub_id = User.sub_id
         switch self {
-        case .getCategoriesList, .deleteImageFromFavourite, .deleteVote, .deleteUploadedImage:
+        case .getCategoriesList, .deleteImageFromFavourite, .deleteVote, .deleteUploadedImage, .getImageAnalysis:
             return .requestPlain
         case .getVotes:
             return .requestParameters(parameters: ["sub_id": sub_id],

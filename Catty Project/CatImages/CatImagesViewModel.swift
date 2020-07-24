@@ -16,6 +16,7 @@ final class CatImagesViewModel {
     let title = "Cat Images"
 
     let onReloadData = PublishSubject<Void>()
+    let onFilterButtonTapped = PublishSubject<Void>()
 
     let displayItems = BehaviorSubject(value: [CatCellViewModel]())
     private(set) var storedItems = [CatCellViewModel]()

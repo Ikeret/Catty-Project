@@ -17,7 +17,7 @@ final class SearchFilterViewModel {
     let gifIsOn = PublishSubject<Bool>()
     let selectedCategory = PublishSubject<Category>()
     let onApplySettings = PublishSubject<Void>()
-    let onSettingsChanged = PublishSubject<Void>()
+    let onSettingsChanged = PublishSubject<Bool>()
 
     var sorting = User.sorting
     var onlyGif = User.onlyGif
@@ -53,8 +53,8 @@ final class SearchFilterViewModel {
                 User.sorting = strongSelf.sorting
                 User.onlyGif = strongSelf.onlyGif
                 User.categoryId = strongSelf.categoryId
-                strongSelf.onSettingsChanged.onNext(())
-            }
+                strongSelf.onSettingsChanged.onNext(true)
+            } else { strongSelf.onSettingsChanged.onNext(false) }
 
         }).disposed(by: disposeBag)
     }

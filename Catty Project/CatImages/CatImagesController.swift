@@ -21,7 +21,7 @@ class CatImagesController: UIViewController {
 
     private let viewModel: CatImagesViewModel
 
-    init(viewModel: CatImagesViewModel) {
+    init(_ viewModel: CatImagesViewModel = CatImagesViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -59,13 +59,7 @@ class CatImagesController: UIViewController {
         viewModel.displayItems.map({ $0.isEmpty }).bind(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
 
-        filterButton.rx.tap.subscribe(onNext: {
-            let model = SearchFilterViewModel()
-            let filterVC = SearchFilterController(viewModel: model)
-            model.onSettingsChanged.bind(to: self.viewModel.onReloadData).disposed(by: self.disposeBag)
-            filterVC.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(filterVC, animated: true)
-        }).disposed(by: disposeBag)
+        filterButton.rx.tap.bind(to: viewModel.onFilterButtonTapped).disposed(by: disposeBag)
 
         viewModel.displayItems
             .bind(to: collectionView.rx.items(cellIdentifier: CatCell.id, cellType: CatCell.self)) { _, model, cell in

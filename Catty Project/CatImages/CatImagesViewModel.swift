@@ -15,8 +15,7 @@ final class CatImagesViewModel {
 
     let title = "Cat Images"
 
-    let onLoadNextPage = PublishSubject<Void>()
-    let onSettingsChanged = PublishSubject<Void>()
+    let onReloadData = PublishSubject<Void>()
 
     let displayItems = BehaviorSubject(value: [CatCellViewModel]())
     private(set) var storedItems = [CatCellViewModel]()
@@ -25,11 +24,17 @@ final class CatImagesViewModel {
 
     init() {
         loadNextPage()
+        setupBindings()
+    }
 
-        onLoadNextPage.subscribe(onNext: { [weak self] in
-            self?.loadNextPage()
-            }).disposed(by: disposeBag)
+    func loadNextPage() {
+        isLoading = true
+        dataProvider.loadCatImages(page: page)
+    }
 
+    private let disposeBag = DisposeBag()
+
+    private func setupBindings() {
         dataProvider.catImages.subscribe(onNext: { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.storedItems.append(contentsOf: $0)
@@ -53,18 +58,11 @@ final class CatImagesViewModel {
             strongSelf.displayItems.onNext(strongSelf.storedItems)
         }).disposed(by: disposeBag)
 
-        onSettingsChanged.subscribe(onNext: { [weak self] in
+        onReloadData.subscribe(onNext: { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.page = 0
             strongSelf.storedItems = []
             strongSelf.loadNextPage()
         }).disposed(by: disposeBag)
     }
-
-    func loadNextPage() {
-        isLoading = true
-        dataProvider.loadCatImages(page: page)
-    }
-
-    let disposeBag = DisposeBag()
 }

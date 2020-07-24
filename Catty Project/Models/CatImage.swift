@@ -11,6 +11,4 @@ import Foundation
 struct CatImage: Decodable {
     let id: String
     let url: String
-    let width: Int?
-    let height: Int?
 }

@@ -15,41 +15,31 @@ final class CatDetailViewModel {
 
     let image_id: String
     let image_url: URL?
-    var imageHeight: CGFloat = 500
-    var vote: Vote?
+    private(set) var vote: Vote?
 
     let onDetailLoaded = PublishSubject<Void>()
     let onVoteLoaded = PublishSubject<Void>()
-    let onVoteChanged = PublishSubject<Int>()
 
-    var detailInfo = [[(name: String, value: String)]]()
-    var detailStats = [[(name: String, value: Int)]]()
-    var detailLinks = [[(key: String, value: String)]]()
+    private(set) var detailInfo = [[(name: String, value: String)]]()
+    private(set) var detailStats = [[(name: String, value: Int)]]()
+    private(set) var detailLinks = [[(key: String, value: String)]]()
 
-    init(image_id: String, image_url: URL?, size: CGSize) {
+    init(image_id: String, image_url: URL?) {
         self.image_id = image_id
         self.image_url = image_url
-
-        if size != .zero {
-            let scale = size.height > size.width ? 1.5 : UIScreen.main.scale
-            let phoneWidth = UIScreen.main.bounds.width
-            let proportions = phoneWidth / size.width / scale
-            imageHeight = size.height*proportions
-
-        }
 
         DispatchQueue.global().async {
             self.prepareData()
         }
 
-        onVoteChanged.subscribe(onNext: { newValue in
-            DataProvider.shared.vote(image_id: image_id, value: newValue)
-        }).disposed(by: disposeBag)
-
         loadVote()
     }
 
-    let disposeBag = DisposeBag()
+    func changeVote(newValue: Int) {
+        DataProvider.shared.vote(image_id: image_id, value: newValue)
+    }
+
+    private let disposeBag = DisposeBag()
 
     private func prepareData() {
         DataProvider.shared.loadImage(image_id: image_id).subscribe(onNext: { [weak self] catDetail in

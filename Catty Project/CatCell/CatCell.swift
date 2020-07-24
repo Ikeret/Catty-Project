@@ -22,7 +22,7 @@ class CatCell: UICollectionViewCell {
 
     var disposeBag = DisposeBag()
 
-    private var model: CatCellViewModel!
+    private var viewModel: CatCellViewModel!
 
     override init(frame: CGRect) {
         catImageView = UIImageView()
@@ -45,10 +45,10 @@ class CatCell: UICollectionViewCell {
         shadowView.isHidden = true
     }
 
-    func configure(model: CatCellViewModel, showButton: Bool = true) {
-        self.model = model
+    func configure(viewModel: CatCellViewModel, showButton: Bool = true) {
+        self.viewModel = viewModel
 
-        guard let url = model.image_url else { return }
+        guard let url = viewModel.image_url else { return }
         let cellSize = contentView.bounds.size
 
         catImageView.kf.indicatorType = .activity
@@ -60,7 +60,7 @@ class CatCell: UICollectionViewCell {
             self?.shadowView.isHidden = !showButton
         }
 
-        let heartImage = UIImage(systemName: model.favImageName)
+        let heartImage = UIImage(systemName: viewModel.favImageName)
         favouriteButton.setBackgroundImage(heartImage, for: .normal)
 
         setupBindings()
@@ -91,10 +91,11 @@ class CatCell: UICollectionViewCell {
     }
 
     private func setupBindings() {
-        favouriteButton.rx.tap.bind(to: model.onChangeFavourite).disposed(by: disposeBag)
         favouriteButton.rx.tap.subscribe(onNext: { [weak self] in
             guard let strongSelf = self else { return }
-            let heartImage = UIImage(systemName: strongSelf.model.favImageName)
+            strongSelf.viewModel.changeFavourite()
+
+            let heartImage = UIImage(systemName: strongSelf.viewModel.favImageName)
             strongSelf.favouriteButton.setBackgroundImage(heartImage, for: .normal)
         }).disposed(by: disposeBag)
     }

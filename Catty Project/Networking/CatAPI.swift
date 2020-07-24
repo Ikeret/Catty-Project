@@ -28,6 +28,7 @@ public enum CatAPI {
 
     case getUploadedImages(_ page: Int)
     case uploadImageFromURL(_ url: URL)
+    case deleteUploadedImage(_ image_id: String)
 }
 
 extension CatAPI: TargetType {
@@ -55,6 +56,8 @@ extension CatAPI: TargetType {
             return "/images/"
         case .uploadImageFromURL:
             return "/images/upload"
+        case .deleteUploadedImage(let image_id):
+            return "/images/\(image_id)"
         }
     }
 
@@ -64,7 +67,7 @@ extension CatAPI: TargetType {
             return .get
         case .vote, .markImageAsFavourite, .uploadImageFromURL:
             return .post
-        case .deleteImageFromFavourite, .deleteVote:
+        case .deleteImageFromFavourite, .deleteVote, .deleteUploadedImage:
             return .delete
         }
     }
@@ -76,7 +79,7 @@ extension CatAPI: TargetType {
     public var task: Task {
         let sub_id = User.sub_id
         switch self {
-        case .getCategoriesList, .deleteImageFromFavourite, .deleteVote:
+        case .getCategoriesList, .deleteImageFromFavourite, .deleteVote, .deleteUploadedImage:
             return .requestPlain
         case .getVotes:
             return .requestParameters(parameters: ["sub_id": sub_id],

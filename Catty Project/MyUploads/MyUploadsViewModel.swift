@@ -12,13 +12,11 @@ import RxCocoa
 
 final class MyUploadsViewModel {
     let title = "My Uploads"
-    let provider = UploadProvider()
+    private let provider = UploadProvider()
 
-    let onUploadFromLibrary = PublishSubject<URL>()
-    let onUploadFromCamera = PublishSubject<Data>()
+    let onImageChoosen = PublishSubject<Data>()
 
     let onFileLoaded = PublishSubject<(success: Bool, message: String)>()
-    let onLoadNextPage = PublishSubject<Void>()
 
     let displayItems = BehaviorSubject(value: [CatCellViewModel]())
 
@@ -32,10 +30,16 @@ final class MyUploadsViewModel {
         setupBindings()
     }
 
-    private func loadNextPage() {
+    func loadNextPage() {
         isLoading = true
         provider.loadUploadedImages(page: page)
         page += 1
+    }
+
+    func deleteImage(index: Int) {
+        provider.deleteImage(image_id: storedImages[index].id)
+        storedImages.remove(at: index)
+        displayItems.onNext(storedImages)
     }
 
     private let disposeBag = DisposeBag()
@@ -47,18 +51,9 @@ final class MyUploadsViewModel {
             strongSelf.displayItems.onNext(strongSelf.storedImages)
         }).disposed(by: disposeBag)
 
-        onLoadNextPage.subscribe(onNext: { [weak self] in self?.loadNextPage() })
-            .disposed(by: disposeBag)
-
-        let fromCamera = onUploadFromCamera.flatMapLatest { [weak self] in
-            self?.provider.sendFile($0) ?? .empty()
-        }
-
-        let fromLibrary = onUploadFromLibrary.flatMapLatest { [weak self] in
-            self?.provider.sendFile($0) ?? .empty()
-        }
-
-        Observable.merge(fromCamera, fromLibrary).subscribe(onNext: { [weak self] in
+        onImageChoosen.flatMapLatest { [weak self] in
+            self?.provider.sendData($0) ?? .empty()
+        }.subscribe(onNext: { [weak self] in
             if let url = URL(string: $0) {
                 debugPrint(url)
                 self?.onFileLoaded.onNext((true, $0))
@@ -66,7 +61,7 @@ final class MyUploadsViewModel {
                 debugPrint($0)
                 self?.onFileLoaded.onNext((false, $0))
             }
-        }).disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
 
         onFileLoaded.map { $0.success }
             .subscribe(onNext: { [weak self] success in

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class CatCollectionView: UICollectionView {
 
@@ -16,7 +18,7 @@ class CatCollectionView: UICollectionView {
 
         let width = UIScreen.main.bounds.width / 2 - 16
         flowLayout.itemSize = CGSize(width: width, height: width)
-        flowLayout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        flowLayout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8)
 
         register(CatCell.self, forCellWithReuseIdentifier: CatCell.id)
         backgroundColor = .systemBackground

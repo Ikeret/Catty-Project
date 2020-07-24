@@ -11,10 +11,8 @@ import Foundation
 // MARK: - CatDetail
 struct CatDetail: Decodable {
     let breeds: [Breed]?
-    let height: Int
     let id: String
     let url: String
-    let width: Int
 }
 
 // MARK: - Breed

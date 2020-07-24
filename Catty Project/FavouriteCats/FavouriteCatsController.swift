@@ -49,11 +49,11 @@ class FavouriteCatsController: UIViewController {
     private let disposeBag = DisposeBag()
 
     private func setupBindigs() {
-        sortButton.rx.tap.bind(to: viewModel.onChangeSort).disposed(by: disposeBag)
+        sortButton.rx.tap.subscribe(onNext: viewModel.changeSort).disposed(by: disposeBag)
 
         viewModel.displayItems
             .bind(to: collectionView.rx.items(cellIdentifier: CatCell.id, cellType: CatCell.self)) { _, model, cell in
-                cell.configure(model: model)
+                cell.configure(viewModel: model)
 
         }.disposed(by: disposeBag)
 
@@ -62,9 +62,10 @@ class FavouriteCatsController: UIViewController {
             .subscribe(onNext: { [weak self] indexPaths in
                 guard let strongSelf = self, !strongSelf.viewModel.isLoading else { return }
 
-                for indexPath in indexPaths where indexPath.item + 10 > strongSelf.viewModel.storedItems.count {
+                for indexPath in indexPaths
+                    where indexPath.item + 10 > strongSelf.viewModel.storedItems.count {
 
-                    self?.viewModel.onLoadNextPage.onNext(())
+                    self?.viewModel.loadNextPage()
                     return
 
                 }
@@ -74,7 +75,7 @@ class FavouriteCatsController: UIViewController {
             .subscribe(onNext: { [weak self] in
                 guard let strongSelf = self else { return }
                 let nextVC = CatDetailController(viewModel:
-                    CatDetailViewModel(image_id: $0.id, image_url: $0.image_url, size: $0.size)
+                    CatDetailViewModel(image_id: $0.id, image_url: $0.image_url)
                 )
                 nextVC.hidesBottomBarWhenPushed = true
                 strongSelf.navigationController?.pushViewController(nextVC, animated: true)

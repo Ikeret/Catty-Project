@@ -165,7 +165,7 @@ class CatDetailController: UIViewController {
         buttonLike.rx.tap.subscribe(onNext: { [weak self] _ in
             guard let strongSelf = self else { return }
 
-            strongSelf.viewModel.onVoteChanged.onNext(1)
+            strongSelf.viewModel.changeVote(newValue: 1)
             strongSelf.buttonsStack.isUserInteractionEnabled = false
 
             UIView.animate(withDuration: 0.5, animations: {
@@ -176,7 +176,7 @@ class CatDetailController: UIViewController {
         buttonDislike.rx.tap.subscribe(onNext: { [weak self] _ in
             guard let strongSelf = self else { return }
 
-            strongSelf.viewModel.onVoteChanged.onNext(0)
+            strongSelf.viewModel.changeVote(newValue: 0)
             strongSelf.buttonsStack.isUserInteractionEnabled = false
 
             UIView.animate(withDuration: 0.5, animations: {

@@ -46,8 +46,6 @@ final class DataProvider {
                 let newData = catImages.map {
                     CatCellViewModel(id: $0.id,
                                      image_url: $0.url,
-                                     width: $0.width,
-                                     height: $0.height,
                                      favouriteId: favIds[$0.id] ?? "",
                                      isFavourite: favIds.keys.contains($0.id))
                 }

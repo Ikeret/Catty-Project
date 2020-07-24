@@ -27,17 +27,13 @@ final class UploadProvider {
         provider.rx.request(.getUploadedImages(page)).map([CatImage].self)
             .subscribe(onSuccess: { [weak self] response in
                 let viewModels = response.map {
-                    CatCellViewModel(id: $0.id,
-                                     image_url: $0.url,
-                                     width: $0.width,
-                                     height: $0.height,
-                                     favouriteId: "")
+                    CatCellViewModel(id: $0.id, image_url: $0.url, favouriteId: "")
                 }
                 self?.catImages.onNext(viewModels)
             }).disposed(by: disposeBag)
     }
 
-    func sendFile(_ fileURL: URL) -> Maybe<String> {
+    private func sendFile(_ fileURL: URL) -> Maybe<String> {
         debugPrint("Sending file...")
         return Maybe<String>.create { [weak self] maybe in
 
@@ -59,12 +55,17 @@ final class UploadProvider {
 
     }
 
-    func sendFile(_ data: Data) -> Maybe<String> {
+    func sendData(_ data: Data) -> Maybe<String> {
         let fileName = UUID().uuidString
         let url = FileManager.default.temporaryDirectory.appendingPathComponent(fileName + ".jpeg")
         FileManager.default.createFile(atPath: url.path, contents: data)
 
         return sendFile(url)
+    }
+
+    func deleteImage(image_id: String) {
+        provider.rx.request(.deleteUploadedImage(image_id)).mapJSON(failsOnEmptyData: false)
+            .subscribe(onSuccess: { debugPrint($0) }).disposed(by: disposeBag)
     }
 
     let disposeBag = DisposeBag()

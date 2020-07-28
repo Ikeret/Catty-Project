@@ -14,7 +14,7 @@ final class CatAnalysisCoordinator: BaseCoordinator<CoordinationResult> {
     let viewModel: CatAnalysisViewModel
     let viewController: CatAnalysisController
     
-    let result = PublishSubject<CoordinationResult>()
+    private let result = PublishSubject<CoordinationResult>()
     
     init(viewModel: CatAnalysisViewModel, navigationController: UINavigationController? = nil) {
         self.viewModel = viewModel

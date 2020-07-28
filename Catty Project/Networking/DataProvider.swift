@@ -12,16 +12,16 @@ import Kingfisher
 import RxSwift
 
 final class DataProvider {
-    static let shared = DataProvider()
+    private(set) static var shared = DataProvider()
+    
+    class func refreshShared() {
+        shared = DataProvider()
+    }
 
     private let provider = MoyaProvider<CatAPI>()
 
     let catImages = BehaviorSubject<[CatCellViewModel]>(value: [])
     let favImages = BehaviorSubject<[FavouriteImage]>(value: [])
-
-    init() {
-        loadFavourites()
-    }
 
     func loadCatImages(page: Int = 0, category: Int = 0) {
 

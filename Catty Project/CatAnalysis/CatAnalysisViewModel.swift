@@ -11,7 +11,7 @@ import RxSwift
 
 final class CatAnalysisViewModel {
     
-    let image_id: String
+    private let image_id: String
     let image_url: URL?
     
     let displayRows = BehaviorSubject(value: [DetailRowView]())
@@ -23,7 +23,7 @@ final class CatAnalysisViewModel {
         loadAnalisys()
     }
     
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     private func loadAnalisys() {
         UploadProvider.shared.getImageAnalysis(image_id: image_id).map { $0.labels }

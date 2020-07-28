@@ -8,7 +8,6 @@
 
 import UIKit
 import RxSwift
-import AlamofireImage
 import Stevia
 import Kingfisher
 

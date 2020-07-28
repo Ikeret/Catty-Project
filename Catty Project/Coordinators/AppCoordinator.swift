@@ -26,13 +26,16 @@ final class AppCoordinator: BaseCoordinator<Void> {
         return .never()
     }
     
-    func showLogin() {
+    private func showLogin() {
         coordinate(to: LoginCoordinator(window: window)).map { _ in}
-            .subscribe(onNext: showContent).disposed(by: bag)
+            .subscribe(onNext: { [weak self] in self?.showContent() }).disposed(by: bag)
     }
     
-    func showContent() {
+    private func showContent() {
         coordinate(to: TabBarCoordinator(window: window)).map { _ in}
-            .subscribe(onNext: showLogin).disposed(by: bag)
+            .subscribe(onNext: { [weak self] in
+                User.logOut()
+                self?.showLogin()
+            }).disposed(by: bag)
     }
 }

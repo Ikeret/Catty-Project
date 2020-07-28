@@ -21,7 +21,8 @@ final class FavouriteCatsCoordinator: BaseCoordinator<CoordinationResult> {
     
     override func start() -> Observable<CoordinationResult> {
         
-        viewModel.modelSelected.subscribe(onNext: showDetail(viewModel:)).disposed(by: bag)
+        viewModel.modelSelected.subscribe(onNext: { [weak self] in self?.showDetail(viewModel: $0) })
+            .disposed(by: bag)
         
         return .never()
     }

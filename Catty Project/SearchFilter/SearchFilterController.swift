@@ -12,27 +12,27 @@ import Stevia
 
 class SearchFilterController: UIViewController {
 
-    let viewModel: SearchFilterViewModel
+    private let viewModel: SearchFilterViewModel
 
-    let tableView = UITableView().style {
+    private let tableView = UITableView().style {
             $0.separatorStyle = .none
             $0.tableFooterView = UIView()
             $0.bounces = false
             $0.register(SearchCategoryCell.self, forCellReuseIdentifier: SearchCategoryCell.id)
         }
 
-    let sortTypes = ["RANDOM", "ASC", "DESC"]
+    private let sortTypes = ["RANDOM", "ASC", "DESC"]
 
-    let sortControl = UISegmentedControl().style {
+    private let sortControl = UISegmentedControl().style {
         $0.insertSegment(withTitle: "RANDOM", at: 0, animated: false)
         $0.insertSegment(withTitle: "ASC", at: 1, animated: false)
         $0.insertSegment(withTitle: "DESC", at: 2, animated: false)
         $0.selectedSegmentIndex = 0
     }
 
-    let gifSwitcher = UISwitch()
+    private let gifSwitcher = UISwitch()
 
-    let applyButton = UIButton().style {
+    private let applyButton = UIButton().style {
         $0.backgroundColor = .systemBlue
         $0.setTitle("Apply", for: .normal)
         $0.setTitleColor(.white, for: .normal)
@@ -52,8 +52,6 @@ class SearchFilterController: UIViewController {
     override func loadView() {
         super.loadView()
         setupLayout()
-
-        view.backgroundColor = .systemBackground
     }
 
     override func viewDidLoad() {
@@ -62,12 +60,9 @@ class SearchFilterController: UIViewController {
         setupBindigns()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        navigationController?.navigationBar.prefersLargeTitles = false
-    }
-
     private func setupLayout() {
+        view.backgroundColor = .systemBackground
+
         let sortLabel = UILabel().style { $0.text = "Sorted by:" }
         let gifLabel = UILabel().style { $0.text = "Only animated images" }
         let categoryLabel = UILabel().style {
@@ -101,18 +96,15 @@ class SearchFilterController: UIViewController {
         )
     }
 
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
 
     private func setupBindigns() {
         sortControl.selectedSegmentIndex = sortTypes.firstIndex(of: viewModel.sorting) ?? 0
         gifSwitcher.isOn = viewModel.onlyGif
 
-        viewModel.categories.bind(to: tableView.rx.items(cellIdentifier: SearchCategoryCell.id,
-                                                         cellType: SearchCategoryCell.self))
-        { _, model, cell in
-            cell.titleLabel.text = model.name.capitalized
-            cell.selectionStyle = .none
-            cell.categoryId = model.id
+        viewModel.categories.bind(to: tableView.rx
+            .items(cellIdentifier: SearchCategoryCell.id, cellType: SearchCategoryCell.self)) { _, model, cell in
+            cell.configure(title: model.name.capitalized, categoryId: model.id)
         }.disposed(by: disposeBag)
 
         tableView.rx.willDisplayCell.subscribe(onNext: { [weak self] in

@@ -25,11 +25,14 @@ final class MyUploadsCoordinator: BaseCoordinator<CoordinationResult> {
         picker.delegate = self
         
         viewModel.onFileLoaded.filter { !$0.success }.map { $0.message }
-            .subscribe(onNext: showAlert(_:)).disposed(by: bag)
+            .subscribe(onNext: { [weak self] in self?.showAlert($0) }).disposed(by: bag)
 
-        viewModel.modelSelected.subscribe(onNext: showAnalysis(_:)).disposed(by: bag)
+        viewModel.modelSelected.subscribe(onNext: { [weak self] in self?.showAnalysis($0) })
+            .disposed(by: bag)
         
-        viewModel.showPicker.subscribe(onNext: showPicker(sourceType:)).disposed(by: bag)
+            viewModel.showPicker.subscribe(onNext: { [weak self] in
+                self?.showPicker(sourceType: $0)
+            }).disposed(by: bag)
         
         return .never()
     }

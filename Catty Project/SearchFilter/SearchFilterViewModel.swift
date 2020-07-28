@@ -27,7 +27,7 @@ final class SearchFilterViewModel {
         setupBindings()
     }
 
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
 
     private func setupBindings() {
         DataProvider.shared.getCategoriesList().bind(to: categories).disposed(by: disposeBag)

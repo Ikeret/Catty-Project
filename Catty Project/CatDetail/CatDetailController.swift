@@ -49,7 +49,6 @@ class CatDetailController: UIViewController {
     override func loadView() {
         super.loadView()
         setupLayout()
-        view.backgroundColor = .systemBackground
     }
 
     override func viewDidLoad() {
@@ -66,6 +65,8 @@ class CatDetailController: UIViewController {
     }
 
     private func setupLayout() {
+        view.backgroundColor = .systemBackground
+
         imageView.kf.indicatorType = .activity
         imageView.kf.setImage(with: viewModel.image_url, options: [])
 
@@ -182,9 +183,9 @@ class CatDetailController: UIViewController {
             }).disposed(by: disposeBag)
 
         viewModel.onDetailLoaded.observeOn(MainScheduler.instance)
-            .subscribe(onCompleted: subviewDetailInfo).disposed(by: disposeBag)
+            .subscribe(onCompleted: { [weak self] in self?.subviewDetailInfo() }).disposed(by: disposeBag)
 
         viewModel.onVoteLoaded.observeOn(MainScheduler.instance)
-            .subscribe(onCompleted: setupVotes).disposed(by: disposeBag)
+            .subscribe(onCompleted: { [weak self] in self?.setupVotes() }).disposed(by: disposeBag)
     }
 }

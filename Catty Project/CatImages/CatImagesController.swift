@@ -8,7 +8,6 @@
 
 import UIKit
 import RxSwift
-import RxCocoa
 
 class CatImagesController: UIViewController {
     private let collectionView = CatCollectionView()
@@ -26,7 +25,7 @@ class CatImagesController: UIViewController {
 
     private let viewModel: CatImagesViewModel
 
-    init(_ viewModel: CatImagesViewModel = CatImagesViewModel()) {
+    init(_ viewModel: CatImagesViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

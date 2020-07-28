@@ -61,7 +61,8 @@ final class MyUploadsViewModel {
             strongSelf.loadNextPage()
         }).disposed(by: disposeBag)
         
-        onFilePicked.subscribe(onNext: sendImage(data:)).disposed(by: disposeBag)
+        onFilePicked.subscribe(onNext: { [weak self] in self?.sendImage(data: $0) })
+            .disposed(by: disposeBag)
     }
     
     private func sendImage(data: Data) {

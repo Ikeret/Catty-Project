@@ -11,15 +11,15 @@ import RxSwift
 
 class FavouriteCatsController: UIViewController {
     
-    let collectionView = CatCollectionView()
+    private let collectionView = CatCollectionView()
     
-    let sortButton = UIBarButtonItem().style {
+    private let sortButton = UIBarButtonItem().style {
         $0.image = UIImage(systemName: "arrow.up.arrow.down")
     }
     
-    let viewModel: FavouriteCatsViewModel
+    private let viewModel: FavouriteCatsViewModel
     
-    init(_ viewModel: FavouriteCatsViewModel = FavouriteCatsViewModel()) {
+    init(_ viewModel: FavouriteCatsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

@@ -24,6 +24,7 @@ final class FavouriteCatsViewModel {
     private var lastAddedFirst = true
 
     init() {
+        dataProvider.loadFavourites()
         loadNextPage()
 
         dataProvider.favImages.subscribe(onNext: { [weak self] images in

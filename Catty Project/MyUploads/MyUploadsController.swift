@@ -89,7 +89,9 @@ class MyUploadsController: UIViewController, UINavigationControllerDelegate {
                 }
             }).disposed(by: disposeBag)
         
-        viewModel.onFileLoaded.map { $0.success }.subscribe(onNext: stopActivity(success:)).disposed(by: disposeBag)
+        viewModel.onFileLoaded.map { $0.success }.subscribe(onNext: { [weak self] in
+            self?.stopActivity(success: $0)
+        }).disposed(by: disposeBag)
         
         collectionView.rx.modelSelected(CatCellViewModel.self)
             .map { CatAnalysisViewModel(image_id: $0.id, image_url: $0.image_url) }
@@ -98,7 +100,8 @@ class MyUploadsController: UIViewController, UINavigationControllerDelegate {
         
         collectionView.rx.setDelegate(self).disposed(by: disposeBag)
         
-        viewModel.onFilePicked.map {_ in }.subscribe(onNext: showActivity).disposed(by: disposeBag)
+        viewModel.onFilePicked.map {_ in }.subscribe(onNext: { [weak self] in self?.showActivity() })
+            .disposed(by: disposeBag)
     }
     
     private func showActivity() {

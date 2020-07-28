@@ -10,10 +10,10 @@ import UIKit
 import RxSwift
 
 final class LoginCoordinator: BaseCoordinator<CoordinationResult> {
-    let window: UIWindow
+    private let window: UIWindow
     
-    let viewModel = LoginViewModel()
-    let viewController: LoginController
+    private let viewModel = LoginViewModel()
+    private let viewController: LoginController
     
     init(window: UIWindow) {
         viewController = LoginController(viewModel)

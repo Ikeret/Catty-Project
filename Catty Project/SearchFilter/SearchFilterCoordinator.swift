@@ -13,7 +13,7 @@ final class SearchFilterCoordinator: BaseCoordinator<CoordinationResult> {
     
     let viewModel = SearchFilterViewModel()
     let viewController: SearchFilterController
-    let result = PublishSubject<CoordinationResult>()
+    private let result = PublishSubject<CoordinationResult>()
     
     override init(navigationController: UINavigationController? = nil) {
         viewController = SearchFilterController(viewModel)
@@ -25,16 +25,11 @@ final class SearchFilterCoordinator: BaseCoordinator<CoordinationResult> {
         viewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewController, animated: true)
         
-        
-        
         viewModel.onSettingsChanged.subscribe(onNext: { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
             self?.result.onNext(.success($0))
         }).disposed(by: bag)
-        
-        viewModel.onApplySettings.subscribe(onNext: { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }).disposed(by: bag)
-        
+
         return result.take(1)
     }
     

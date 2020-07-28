@@ -34,7 +34,7 @@ final class User {
         set { UserDefaults.standard.set(newValue, forKey: "\(name) categories") }
     }
     
-    static var lastUser: String? {
+    private static var lastUser: String? {
         get { UserDefaults.standard.string(forKey: "lastUser") }
         set { UserDefaults.standard.set(newValue, forKey: "lastUser") }
     }
@@ -56,5 +56,12 @@ final class User {
             sub_id = UUID().uuidString
             users[name] = sub_id
         }
+    }
+    
+    class func logOut() {
+        DataProvider.refreshShared()
+        lastUser = nil
+        name = ""
+        sub_id = ""
     }
 }

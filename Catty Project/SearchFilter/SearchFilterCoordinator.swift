@@ -13,10 +13,12 @@ final class SearchFilterCoordinator: BaseCoordinator<CoordinationResult> {
     
     let viewModel = SearchFilterViewModel()
     let viewController: SearchFilterController
+    let result = PublishSubject<CoordinationResult>()
     
     override init(navigationController: UINavigationController? = nil) {
         viewController = SearchFilterController(viewModel)
         super.init(navigationController: navigationController)
+        navigationController?.delegate = self
     }
     
     override func start() -> Observable<CoordinationResult> {
@@ -24,16 +26,25 @@ final class SearchFilterCoordinator: BaseCoordinator<CoordinationResult> {
         navigationController?.pushViewController(viewController, animated: true)
         
         
-        let result = PublishSubject<CoordinationResult>()
-        viewModel.onSettingsChanged.subscribe(onNext: {
-            result.onNext(.success($0))
+        
+        viewModel.onSettingsChanged.subscribe(onNext: { [weak self] in
+            self?.result.onNext(.success($0))
         }).disposed(by: bag)
         
         viewModel.onApplySettings.subscribe(onNext: { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }).disposed(by: bag)
         
-        return result
+        return result.take(1)
+    }
+    
+}
+
+extension SearchFilterCoordinator: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        if viewController != self.viewController {
+            result.onNext(.backSwipe)
+        }
     }
     
 }

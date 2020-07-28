@@ -20,10 +20,16 @@ final class CatImagesCoordinator: BaseCoordinator<CoordinationResult> {
     }
     
     override func start() -> Observable<CoordinationResult> {
+        let result = PublishSubject<CoordinationResult>()
+        
         viewModel.onFilterButtonTapped.subscribe(onNext: showFilter).disposed(by: bag)
         viewModel.modelSelected.subscribe(onNext: showDetail(viewModel:)).disposed(by: bag)
         
-        return .never()
+        viewModel.onLogOutButtonTapped.subscribe(onNext: {
+            result.onNext(.logOut)
+        }).disposed(by: bag)
+        
+        return result
     }
     
     private func showFilter() {
@@ -45,3 +51,5 @@ final class CatImagesCoordinator: BaseCoordinator<CoordinationResult> {
     }
     
 }
+
+

@@ -7,7 +7,14 @@
 //
 
 import Foundation
+import RxSwift
 
-final class LoginViewModel {
-
+final class LoginViewModel {    
+    let registerUser = PublishSubject<String>()
+    
+    init() {
+        registerUser.subscribe(onNext: User.registerUser(name:)).disposed(by: disposeBag)
+    }
+    
+    private let disposeBag = DisposeBag()
 }

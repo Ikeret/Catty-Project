@@ -10,9 +10,26 @@ import UIKit
 import RxSwift
 
 final class LoginCoordinator: BaseCoordinator<CoordinationResult> {
+    let window: UIWindow
+    
+    let viewModel = LoginViewModel()
+    let viewController: LoginController
+    
+    init(window: UIWindow) {
+        viewController = LoginController(viewModel)
+        self.window = window
+    }
     
     override func start() -> Observable<CoordinationResult> {
-        return .never()
+        let result = PublishSubject<CoordinationResult>()
+        
+        viewModel.registerUser.subscribe(onNext: { _ in
+            result.onNext(.logIn)
+        }).disposed(by: bag)
+        
+        window.rootViewController = viewController
+        
+        return result.take(1)
     }
     
 }

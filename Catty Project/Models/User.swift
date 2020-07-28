@@ -12,7 +12,7 @@ final class User {
     private init() {}
 
     static private(set) var name: String = ""
-    static private(set) var sub_id: String = "test2"
+    static private(set) var sub_id: String = ""
 
     static private var users: [String: String] {
         get { UserDefaults.standard.dictionary(forKey: "users") as? [String: String] ?? ["": ""] }
@@ -33,14 +33,28 @@ final class User {
         get { UserDefaults.standard.integer(forKey: "\(name) categories") }
         set { UserDefaults.standard.set(newValue, forKey: "\(name) categories") }
     }
-
-    class func isUserRegistered(name: String) -> Bool {
-        return users[name] != nil
+    
+    static var lastUser: String? {
+        get { UserDefaults.standard.string(forKey: "lastUser") }
+        set { UserDefaults.standard.set(newValue, forKey: "lastUser") }
+    }
+    
+    class func registerLastUser() -> Bool {
+        if let name = lastUser {
+            registerUser(name: name)
+            return true
+        }
+        return false
     }
 
     class func registerUser(name: String) {
         self.name = name
-        sub_id = UUID().uuidString
-        users[name] = sub_id
+        lastUser = name
+        if let sub_id = users[name] {
+            self.sub_id = sub_id
+        } else {
+            sub_id = UUID().uuidString
+            users[name] = sub_id
+        }
     }
 }

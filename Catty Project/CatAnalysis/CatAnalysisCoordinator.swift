@@ -14,18 +14,30 @@ final class CatAnalysisCoordinator: BaseCoordinator<CoordinationResult> {
     let viewModel: CatAnalysisViewModel
     let viewController: CatAnalysisController
     
+    let result = PublishSubject<CoordinationResult>()
+    
     init(viewModel: CatAnalysisViewModel, navigationController: UINavigationController? = nil) {
         self.viewModel = viewModel
         viewController = CatAnalysisController(viewModel: viewModel)
         
         super.init(navigationController: navigationController)
+        navigationController?.delegate = self
     }
     
     override func start() -> Observable<CoordinationResult> {
         viewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewController, animated: true)
         
-        return .never()
+        return result.take(1)
+    }
+    
+}
+
+extension CatAnalysisCoordinator: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        if viewController != self.viewController {
+            result.onNext(.backSwipe)
+        }
     }
     
 }

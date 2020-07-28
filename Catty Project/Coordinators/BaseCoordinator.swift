@@ -11,7 +11,10 @@ import Foundation
 
 enum CoordinationResult {
 	case success(Bool)
+    case logIn
+    case logOut
 	case cancel
+    case backSwipe
 }
 
 /// Base abstract coordinator generic over the return type of the `start` method.

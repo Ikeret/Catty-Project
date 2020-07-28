@@ -16,6 +16,7 @@ final class CatImagesViewModel {
     let title = "Cat Images"
 
     let onReloadData = PublishSubject<Void>()
+    let onLogOutButtonTapped = PublishSubject<Void>()
     let onFilterButtonTapped = PublishSubject<Void>()
     let modelSelected = PublishSubject<CatDetailViewModel>()
 

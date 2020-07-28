@@ -16,6 +16,11 @@ class CatImagesController: UIViewController {
     private let filterButton = UIBarButtonItem().style {
         $0.image = UIImage(systemName: "slider.horizontal.3")
     }
+    
+    private let logOutButton = UIBarButtonItem().style {
+        $0.tintColor = .systemRed
+        $0.image = UIImage(systemName: "escape")
+    }
 
     private let refreshControl = UIRefreshControl()
 
@@ -38,7 +43,8 @@ class CatImagesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = viewModel.title
-        navigationItem.setRightBarButton(filterButton, animated: false)
+        navigationItem.leftBarButtonItem = logOutButton
+        navigationItem.rightBarButtonItem = filterButton
 
         setupBindigs()
     }
@@ -59,6 +65,8 @@ class CatImagesController: UIViewController {
         viewModel.displayItems.map({ $0.isEmpty }).bind(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
 
+        
+        logOutButton.rx.tap.bind(to: viewModel.onLogOutButtonTapped).disposed(by: disposeBag)
         filterButton.rx.tap.bind(to: viewModel.onFilterButtonTapped).disposed(by: disposeBag)
 
         viewModel.displayItems

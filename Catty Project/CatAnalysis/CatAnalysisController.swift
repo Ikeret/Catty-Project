@@ -42,22 +42,6 @@ class CatAnalysisController: UIViewController {
     override func loadView() {
         super.loadView()
         setupLayout()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
-        navigationItem.hidesBackButton = true
-        
-        let backButton = UIButton().style {
-            $0.setTitle("Back", for: .normal)
-            $0.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-            $0.setTitleColor(.systemBlue, for: .normal)
-            $0.backgroundColor = .white
-            $0.layer.cornerRadius = 15
-            $0.width(70).height(35)
-            $0.layer.borderColor = UIColor.systemBlue.cgColor
-            $0.layer.borderWidth = 1
-        }
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
     }
     
     override func viewDidLoad() {
@@ -65,10 +49,16 @@ class CatAnalysisController: UIViewController {
         setupBindings()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.setupTranslusent()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.setupNormal()
+    }
+    
     private func setupLayout() {
         view.backgroundColor = .systemBackground
-        
-       
         
         imageView.kf.indicatorType = .activity
         imageView.kf.setImage(with: viewModel.image_url)
@@ -77,9 +67,9 @@ class CatAnalysisController: UIViewController {
         scrollView.contentInset = UIEdgeInsets(top: imageHeight, left: 0, bottom: 0, right: 0)
         
         imageView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: imageHeight)
-        view.addSubview(imageView)
         
         view.sv(scrollView)
+        view.addSubview(imageView)
         
         scrollView.fillContainer()
         
@@ -107,11 +97,8 @@ class CatAnalysisController: UIViewController {
             .subscribe(onNext: { [weak self] contentOffset in
                 guard let strongSelf = self else { return }
                 
-                let offset = max(0, -contentOffset.y)
+                let offset = max(80, -contentOffset.y)
                 strongSelf.imageView.frame = CGRect(x: 0, y: 0, width: strongSelf.view.bounds.width, height: offset)
-                
-                //            self?.navigationController?.setNavigationBarHidden(offset > 40, animated: true)
-                //            self?.dismissButton.isHidden = offset < 40
                 
             }).disposed(by: disposeBag)
     }

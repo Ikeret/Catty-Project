@@ -11,10 +11,25 @@ import RxSwift
 
 final class FavouriteCatsCoordinator: BaseCoordinator<CoordinationResult> {
     
-    let viewController = FavouriteCatsController()
+    let viewModel = FavouriteCatsViewModel()
+    let viewController: FavouriteCatsController
+    
+    override init(navigationController: UINavigationController? = nil) {
+        viewController = FavouriteCatsController(viewModel)
+        super.init(navigationController: navigationController)
+    }
     
     override func start() -> Observable<CoordinationResult> {
+        
+        viewModel.modelSelected.subscribe(onNext: showDetail(viewModel:)).disposed(by: bag)
+        
         return .never()
+    }
+    
+    private func showDetail(viewModel: CatDetailViewModel) {
+        let coordinator = CatDetailCoordinator(viewModel: viewModel,
+                                               navigationController: navigationController)
+        coordinate(to: coordinator).subscribe().disposed(by: bag)
     }
     
 }

@@ -15,7 +15,7 @@ enum CoordinationResult {
 }
 
 /// Base abstract coordinator generic over the return type of the `start` method.
-class BaseCoordinator<ResultType> {
+class BaseCoordinator<ResultType> : NSObject {
 
     /// Typealias which will allows to access a ResultType of the Coordainator by `CoordinatorName.CoordinationResult`.
     typealias CoordinationResult = ResultType
@@ -23,6 +23,8 @@ class BaseCoordinator<ResultType> {
     /// Utility `DisposeBag` used by the subclasses.
     let bag = DisposeBag()
 
+    weak var navigationController: UINavigationController?
+    
 	/// Associate with your base controller for avoid deinit
 	var baseViewController: UIViewController?
 
@@ -34,6 +36,10 @@ class BaseCoordinator<ResultType> {
     /// Key is an `identifier` of the child coordinator and value is the coordinator itself.
     /// Value type is `Any` because Swift doesn't allow to store generic types in the array.
     private var childCoordinators = [UUID: Any]()
+    
+    init(navigationController: UINavigationController? = nil) {
+        self.navigationController = navigationController
+    }
 
 	deinit {
 		debugPrint("🚩 Coordinator was deinitialized: \(self)")

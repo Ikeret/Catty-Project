@@ -11,7 +11,20 @@ import RxSwift
 
 final class CatAnalysisCoordinator: BaseCoordinator<CoordinationResult> {
     
+    let viewModel: CatAnalysisViewModel
+    let viewController: CatAnalysisController
+    
+    init(viewModel: CatAnalysisViewModel, navigationController: UINavigationController? = nil) {
+        self.viewModel = viewModel
+        viewController = CatAnalysisController(viewModel: viewModel)
+        
+        super.init(navigationController: navigationController)
+    }
+    
     override func start() -> Observable<CoordinationResult> {
+        viewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(viewController, animated: true)
+        
         return .never()
     }
     

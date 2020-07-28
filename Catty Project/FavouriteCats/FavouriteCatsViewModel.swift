@@ -14,6 +14,8 @@ final class FavouriteCatsViewModel {
 
     private let dataProvider = DataProvider.shared
 
+    let modelSelected = PublishSubject<CatDetailViewModel>()
+    
     let displayItems = BehaviorSubject(value: [CatCellViewModel]())
     private(set) var storedItems = [CatCellViewModel]()
     private(set) var isLoading = false

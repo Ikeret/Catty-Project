@@ -37,16 +37,6 @@ class CatDetailController: UIViewController {
 
     private let scrollContent = UIStackView().style { $0.spacing = 16; $0.axis = .vertical }
 
-    private let dismissButton = UIButton().style {
-        $0.setImage(UIImage(systemName: "arrow.left"), for: .normal)
-        $0.backgroundColor = .white
-        $0.tintColor = .systemBlue
-        $0.size(50)
-        $0.layer.cornerRadius = 25
-        $0.layer.borderColor = UIColor.systemBlue.cgColor
-        $0.layer.borderWidth = 3
-    }
-
     init(viewModel: CatDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -68,13 +58,11 @@ class CatDetailController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.navigationBar.setupTranslusent()
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.navigationBar.setupNormal()
     }
 
     private func setupLayout() {
@@ -85,15 +73,11 @@ class CatDetailController: UIViewController {
         scrollView.contentInset = UIEdgeInsets(top: imageHeight, left: 0, bottom: 0, right: 0)
 
         imageView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: imageHeight)
+        view.sv(scrollView)
         view.addSubview(imageView)
-        view.sv(scrollView, dismissButton)
+
 
         scrollView.fillContainer()
-
-        view.layout(
-            40,
-            |-16-dismissButton
-        )
 
         // MARK: Scroll View
 
@@ -161,6 +145,7 @@ class CatDetailController: UIViewController {
     }
 
     private let disposeBag = DisposeBag()
+    
     private func setupBindings() {
         buttonLike.rx.tap.subscribe(onNext: { [weak self] _ in
             guard let strongSelf = self else { return }
@@ -170,7 +155,8 @@ class CatDetailController: UIViewController {
 
             UIView.animate(withDuration: 0.5, animations: {
                 strongSelf.buttonDislike.alpha = 0
-            }, completion: { strongSelf.buttonDislike.isHidden = $0 })
+                strongSelf.buttonDislike.isHidden = true
+            })
         }).disposed(by: disposeBag)
 
         buttonDislike.rx.tap.subscribe(onNext: { [weak self] _ in
@@ -190,28 +176,15 @@ class CatDetailController: UIViewController {
             .subscribe(onNext: { [weak self] contentOffset in
                 guard let strongSelf = self else { return }
 
-                let offset = max(0, -contentOffset.y)
+                let offset = max(80, -contentOffset.y)
                 strongSelf.imageView.frame = CGRect(x: 0, y: 0, width: strongSelf.view.bounds.width, height: offset)
-
-                debugPrint(offset)
-                self?.navigationController?.setNavigationBarHidden(offset > 40, animated: true)
-                self?.dismissButton.isHidden = offset < 40
 
             }).disposed(by: disposeBag)
 
-        viewModel.onDetailLoaded
-            .observeOn(MainScheduler.instance)
-            .subscribe(onCompleted: { [weak self] in self?.subviewDetailInfo()})
-            .disposed(by: disposeBag)
+        viewModel.onDetailLoaded.observeOn(MainScheduler.instance)
+            .subscribe(onCompleted: subviewDetailInfo).disposed(by: disposeBag)
 
-        viewModel.onVoteLoaded
-            .observeOn(MainScheduler.instance)
-            .subscribe(onCompleted: { [weak self] in self?.setupVotes()})
-            .disposed(by: disposeBag)
-
-        dismissButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }).disposed(by: disposeBag)
+        viewModel.onVoteLoaded.observeOn(MainScheduler.instance)
+            .subscribe(onCompleted: setupVotes).disposed(by: disposeBag)
     }
-
 }

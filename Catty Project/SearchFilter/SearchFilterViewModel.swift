@@ -19,9 +19,9 @@ final class SearchFilterViewModel {
     let onApplySettings = PublishSubject<Void>()
     let onSettingsChanged = PublishSubject<Bool>()
 
-    var sorting = User.sorting
-    var onlyGif = User.onlyGif
-    var categoryId = User.categoryId
+    private(set) var sorting = User.sorting
+    private(set) var onlyGif = User.onlyGif
+    private(set) var categoryId = User.categoryId
 
     init() {
         setupBindings()
@@ -30,9 +30,7 @@ final class SearchFilterViewModel {
     let disposeBag = DisposeBag()
 
     private func setupBindings() {
-        DataProvider.shared.getCategoriesList().subscribe(onNext: { [weak self] categories in
-            self?.categories.onNext(categories)
-        }).disposed(by: disposeBag)
+        DataProvider.shared.getCategoriesList().bind(to: categories).disposed(by: disposeBag)
 
         selectedSort.subscribe(onNext: { [weak self] in
             self?.sorting = $0

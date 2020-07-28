@@ -25,18 +25,25 @@ final class TabBarCoordinator: BaseCoordinator<CoordinationResult> {
         let tabBarController = UITabBarController()
         tabBarController.selectedIndex = 0
         
-        let catImagesVC = CatImagesController()
+        let catImagesVC = catImagesCoordinator.viewController
         let catImagesNC = UINavigationController(rootViewController: catImagesVC)
         catImagesNC.tabBarItem = .init(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
-
-        let favCatsVC = FavouriteCatsController()
+        catImagesCoordinator.navigationController = catImagesNC
+        catImagesCoordinator.start().subscribe().disposed(by: bag)
+        
+        let favCatsVC = favouriteCatsCoordinator.viewController
         let favCatsNC = UINavigationController(rootViewController: favCatsVC)
         favCatsNC.tabBarItem = .init(title: "Likes", image: UIImage(systemName: "heart.fill"), tag: 1)
-
-        let myUploadsVC = MyUploadsController()
+        favouriteCatsCoordinator.navigationController = favCatsNC
+        favouriteCatsCoordinator.start().subscribe().disposed(by: bag)
+        
+        let myUploadsVC = myUploadsCoordinator.viewController
         let myUploadsNC = UINavigationController(rootViewController: myUploadsVC)
         myUploadsNC.tabBarItem = .init(title: "Uploads", image: UIImage(systemName: "icloud.and.arrow.up.fill"), tag: 2)
-
+        myUploadsCoordinator.navigationController = myUploadsNC
+        myUploadsCoordinator.start().subscribe().disposed(by: bag)
+        
+        
         tabBarController.viewControllers = [catImagesNC, favCatsNC, myUploadsNC]
         
         window.rootViewController = tabBarController

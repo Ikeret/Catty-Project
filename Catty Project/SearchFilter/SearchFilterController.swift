@@ -125,19 +125,14 @@ class SearchFilterController: UIViewController {
             }).disposed(by: disposeBag)
 
         tableView.rx.modelSelected(Category.self).bind(to: viewModel.selectedCategory).disposed(by: disposeBag)
-
+        
         sortControl.rx.selectedSegmentIndex.skip(1).subscribe(onNext: { [weak self] in
             guard let strongSelf = self else { return }
             self?.viewModel.selectedSort.onNext(strongSelf.sortTypes[$0])
         }).disposed(by: disposeBag)
 
-        gifSwitcher.rx.isOn.skip(1).subscribe(onNext: { [weak self] in
-            self?.viewModel.gifIsOn.onNext($0)
-        }).disposed(by: disposeBag)
+        gifSwitcher.rx.isOn.skip(1).bind(to: viewModel.gifIsOn).disposed(by: disposeBag)
 
         applyButton.rx.tap.bind(to: viewModel.onApplySettings).disposed(by: disposeBag)
-        applyButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-            }).disposed(by: disposeBag)
     }
 }

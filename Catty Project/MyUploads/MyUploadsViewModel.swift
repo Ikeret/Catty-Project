@@ -14,8 +14,10 @@ final class MyUploadsViewModel {
     let title = "My Uploads"
     private let provider = UploadProvider()
 
-    let onImageChoosen = PublishSubject<Data>()
-
+    let modelSelected = PublishSubject<CatAnalysisViewModel>()
+    let showPicker = PublishSubject<UIImagePickerController.SourceType>()
+    
+    let onFilePicked = PublishSubject<Data>()
     let onFileLoaded = PublishSubject<(success: Bool, message: String)>()
 
     let displayItems = BehaviorSubject(value: [CatCellViewModel]())
@@ -51,9 +53,19 @@ final class MyUploadsViewModel {
             strongSelf.displayItems.onNext(strongSelf.storedImages)
         }).disposed(by: disposeBag)
 
-        onImageChoosen.flatMapLatest { [weak self] in
-            self?.provider.sendData($0) ?? .empty()
-        }.subscribe(onNext: { [weak self] in
+        onFileLoaded.map { $0.success }
+            .subscribe(onNext: { [weak self] success in
+            guard let strongSelf = self, success else { return }
+            strongSelf.page = 0
+            strongSelf.storedImages = []
+            strongSelf.loadNextPage()
+        }).disposed(by: disposeBag)
+        
+        onFilePicked.subscribe(onNext: sendImage(data:)).disposed(by: disposeBag)
+    }
+    
+    private func sendImage(data: Data) {
+        provider.sendData(data).subscribe(onSuccess: { [weak self] in
             if let url = URL(string: $0) {
                 debugPrint(url)
                 self?.onFileLoaded.onNext((true, $0))
@@ -61,14 +73,6 @@ final class MyUploadsViewModel {
                 debugPrint($0)
                 self?.onFileLoaded.onNext((false, $0))
             }
-            }).disposed(by: disposeBag)
-
-        onFileLoaded.map { $0.success }
-            .subscribe(onNext: { [weak self] success in
-            guard let strongSelf = self, success else { return }
-            strongSelf.page = 0
-            strongSelf.storedImages = []
-            strongSelf.loadNextPage()
         }).disposed(by: disposeBag)
     }
 }

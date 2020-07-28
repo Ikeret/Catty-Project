@@ -78,17 +78,12 @@ class CatImagesController: UIViewController {
             }).disposed(by: disposeBag)
 
         collectionView.rx.modelSelected(CatCellViewModel.self)
-            .subscribe(onNext: { [weak self] in
-                guard let strongSelf = self else { return }
-                let nextVC = CatDetailController(viewModel:
-                    CatDetailViewModel(image_id: $0.id, image_url: $0.image_url)
-                )
-                nextVC.hidesBottomBarWhenPushed = true
-                strongSelf.navigationController?.pushViewController(nextVC, animated: true)
-            }).disposed(by: disposeBag)
+            .map { CatDetailViewModel(image_id: $0.id, image_url: $0.image_url) }
+            .bind(to: viewModel.modelSelected)
+            .disposed(by: disposeBag)
 
         viewModel.onReloadData.subscribe(onNext: { [weak self] in
-            self?.collectionView.setContentOffset(CGPoint.zero, animated: true)
+            self?.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
         }).disposed(by: disposeBag)
 
     }

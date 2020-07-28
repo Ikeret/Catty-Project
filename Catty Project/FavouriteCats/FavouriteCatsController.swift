@@ -10,75 +10,74 @@ import UIKit
 import RxSwift
 
 class FavouriteCatsController: UIViewController {
-
+    
     let collectionView = CatCollectionView()
-
+    
     let sortButton = UIBarButtonItem().style {
         $0.image = UIImage(systemName: "arrow.up.arrow.down")
     }
-
+    
     let viewModel: FavouriteCatsViewModel
-
-    init(viewModel: FavouriteCatsViewModel = FavouriteCatsViewModel()) {
+    
+    init(_ viewModel: FavouriteCatsViewModel = FavouriteCatsViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func loadView() {
         super.loadView()
         setupLayout()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = viewModel.title
         navigationItem.setRightBarButton(sortButton, animated: false)
-
+        
         setupBindigs()
     }
-
+    
     private func setupLayout() {
         view.sv(collectionView)
         collectionView.fillContainer()
     }
-
+    
     private let disposeBag = DisposeBag()
-
+    
     private func setupBindigs() {
-        sortButton.rx.tap.subscribe(onNext: viewModel.changeSort).disposed(by: disposeBag)
-
+        sortButton.rx.tap.subscribe(onNext: { [weak self] in
+            self?.viewModel.changeSort()
+            self?.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+        }).disposed(by: disposeBag)
+        
+        
         viewModel.displayItems
             .bind(to: collectionView.rx.items(cellIdentifier: CatCell.id, cellType: CatCell.self)) { _, model, cell in
                 cell.configure(viewModel: model)
-
+                
         }.disposed(by: disposeBag)
-
+        
         collectionView.rx.prefetchItems
             .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] indexPaths in
                 guard let strongSelf = self, !strongSelf.viewModel.isLoading else { return }
-
+                
                 for indexPath in indexPaths
                     where indexPath.item + 10 > strongSelf.viewModel.storedItems.count {
-
-                    self?.viewModel.loadNextPage()
-                    return
-
+                        
+                        self?.viewModel.loadNextPage()
+                        return
+                        
                 }
             }).disposed(by: disposeBag)
-
+        
         collectionView.rx.modelSelected(CatCellViewModel.self)
-            .subscribe(onNext: { [weak self] in
-                guard let strongSelf = self else { return }
-                let nextVC = CatDetailController(viewModel:
-                    CatDetailViewModel(image_id: $0.id, image_url: $0.image_url)
-                )
-                nextVC.hidesBottomBarWhenPushed = true
-                strongSelf.navigationController?.pushViewController(nextVC, animated: true)
-            }).disposed(by: disposeBag)
+            .map { CatDetailViewModel(image_id: $0.id, image_url: $0.image_url) }
+            .bind(to: viewModel.modelSelected)
+            .disposed(by: disposeBag)
     }
 }

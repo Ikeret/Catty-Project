@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181035B124D02A3A00343AF3 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181035B024D02A3A00343AF3 /* UINavigationBar.swift */; };
 		1863CDE424C1D23200D0E33D /* CatDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863CDE324C1D23200D0E33D /* CatDetailController.swift */; };
 		1863CDE624C1D30F00D0E33D /* CatDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863CDE524C1D30F00D0E33D /* CatDetailViewModel.swift */; };
 		1863CDE824C3941000D0E33D /* FavouriteCatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863CDE724C3940F00D0E33D /* FavouriteCatsController.swift */; };
@@ -33,7 +34,6 @@
 		18DF4DA424CB1045008A344F /* CatAnalysisCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4DA324CB1045008A344F /* CatAnalysisCoordinator.swift */; };
 		18FA511024C5BF89000FAC5F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA510F24C5BF89000FAC5F /* Category.swift */; };
 		18FA511224C72017000FAC5F /* SearchCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA511124C72017000FAC5F /* SearchCategoryCell.swift */; };
-		18FA511424C823FA000FAC5F /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA511324C823FA000FAC5F /* UIBarButtonItemExtension.swift */; };
 		18FA511724C834DF000FAC5F /* MyUploadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA511624C834DF000FAC5F /* MyUploadsViewModel.swift */; };
 		18FA511924C8351B000FAC5F /* MyUploadsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA511824C8351B000FAC5F /* MyUploadsController.swift */; };
 		18FA511B24C84202000FAC5F /* UploadProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA511A24C84202000FAC5F /* UploadProvider.swift */; };
@@ -55,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		181035B024D02A3A00343AF3 /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		1863CDE324C1D23200D0E33D /* CatDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailController.swift; sourceTree = "<group>"; };
 		1863CDE524C1D30F00D0E33D /* CatDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailViewModel.swift; sourceTree = "<group>"; };
 		1863CDE724C3940F00D0E33D /* FavouriteCatsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCatsController.swift; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		18DF4DA324CB1045008A344F /* CatAnalysisCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAnalysisCoordinator.swift; sourceTree = "<group>"; };
 		18FA510F24C5BF89000FAC5F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		18FA511124C72017000FAC5F /* SearchCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryCell.swift; sourceTree = "<group>"; };
-		18FA511324C823FA000FAC5F /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
 		18FA511624C834DF000FAC5F /* MyUploadsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUploadsViewModel.swift; sourceTree = "<group>"; };
 		18FA511824C8351B000FAC5F /* MyUploadsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUploadsController.swift; sourceTree = "<group>"; };
 		18FA511A24C84202000FAC5F /* UploadProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadProvider.swift; sourceTree = "<group>"; };
@@ -270,7 +270,7 @@
 		18FB5FE024C0844000F579F6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				18FA511324C823FA000FAC5F /* UIBarButtonItemExtension.swift */,
+				181035B024D02A3A00343AF3 /* UINavigationBar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -451,12 +451,12 @@
 				189A2F6624CAD2B70014687E /* CatAnalysisController.swift in Sources */,
 				18FB5FD924C02ADA00F579F6 /* TabBarCoordinator.swift in Sources */,
 				18DF4D9A24CB0FB4008A344F /* CatImagesCoordinator.swift in Sources */,
-				18FA511424C823FA000FAC5F /* UIBarButtonItemExtension.swift in Sources */,
 				18FB5FD524BFAF1E00F579F6 /* CatImagesViewModel.swift in Sources */,
 				18FB5FDC24C0332F00F579F6 /* DataProvider.swift in Sources */,
 				18A94A2324BF1A8B004AD052 /* User.swift in Sources */,
 				18A949FE24BEE1F5004AD052 /* SceneDelegate.swift in Sources */,
 				18FA511724C834DF000FAC5F /* MyUploadsViewModel.swift in Sources */,
+				181035B124D02A3A00343AF3 /* UINavigationBar.swift in Sources */,
 				18FBF86C24C507D80013178E /* DetailRowView.swift in Sources */,
 				18FBF86E24C59ADA0013178E /* Vote.swift in Sources */,
 			);

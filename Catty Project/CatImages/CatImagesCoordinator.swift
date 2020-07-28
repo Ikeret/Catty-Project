@@ -14,22 +14,20 @@ final class CatImagesCoordinator: BaseCoordinator<CoordinationResult> {
     let viewModel = CatImagesViewModel()
     let viewController: CatImagesController
     
-    override init() {
+    override init(navigationController: UINavigationController? = nil) {
         viewController = CatImagesController(viewModel)
+        super.init(navigationController: navigationController)
     }
     
     override func start() -> Observable<CoordinationResult> {
-        
-        viewModel.onFilterButtonTapped.subscribe(onNext: { [weak self] in
-            self?.showFilter()
-            }).disposed(by: bag)
-        
+        viewModel.onFilterButtonTapped.subscribe(onNext: showFilter).disposed(by: bag)
+        viewModel.modelSelected.subscribe(onNext: showDetail(viewModel:)).disposed(by: bag)
         
         return .never()
     }
     
     private func showFilter() {
-        let coordinator = SearchFilterCoordinator()
+        let coordinator = SearchFilterCoordinator(navigationController: navigationController)
         coordinate(to: coordinator).subscribe(onNext: { [weak self] in
             switch $0 {
             case .success(let settingsChanged):
@@ -38,6 +36,12 @@ final class CatImagesCoordinator: BaseCoordinator<CoordinationResult> {
                 return
             }
         }).disposed(by: bag)
+    }
+    
+    private func showDetail(viewModel: CatDetailViewModel) {
+        let coordinator = CatDetailCoordinator(viewModel: viewModel,
+                                               navigationController: navigationController)
+        coordinate(to: coordinator).subscribe().disposed(by: bag)
     }
     
 }

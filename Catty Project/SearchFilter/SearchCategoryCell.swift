@@ -48,7 +48,7 @@ class SearchCategoryCell: UITableViewCell {
             selectedView.backgroundColor = .systemBlue
         } else {
             titleLabel.textColor = .label
-            selectedView.backgroundColor = .lightGray
+            selectedView.backgroundColor = .systemGray5
         }
     }
 }

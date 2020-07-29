@@ -45,10 +45,9 @@ class CatDetailController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func loadView() {
-        super.loadView()
-        setupLayout()
+        view = setupLayout()
     }
 
     override func viewDidLoad() {
@@ -64,16 +63,17 @@ class CatDetailController: UIViewController {
         navigationController?.navigationBar.setupNormal()
     }
 
-    private func setupLayout() {
+    private func setupLayout() -> UIView {
+        let view = UIView()
         view.backgroundColor = .systemBackground
 
         imageView.kf.indicatorType = .activity
         imageView.kf.setImage(with: viewModel.image_url, options: [])
 
-        let imageHeight: CGFloat = view.bounds.height / 2
+        let imageHeight: CGFloat = UIScreen.main.bounds.height / 2
         scrollView.contentInset = UIEdgeInsets(top: imageHeight, left: 0, bottom: 0, right: 0)
 
-        imageView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: imageHeight)
+        imageView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: imageHeight)
         view.sv(scrollView)
         view.addSubview(imageView)
 
@@ -82,7 +82,7 @@ class CatDetailController: UIViewController {
 
         // MARK: Scroll View
 
-        scrollContent.width(view.bounds.width - 32)
+        scrollContent.width(UIScreen.main.bounds.width - 32)
         scrollView.sv(scrollContent)
         scrollView.layout(
             8,
@@ -96,7 +96,7 @@ class CatDetailController: UIViewController {
         buttonsStack.addArrangedSubview(buttonLike)
 
         scrollContent.addArrangedSubview(buttonsStack)
-
+        return view
     }
 
     private func subviewDetailInfo() {

@@ -13,7 +13,7 @@ final class LoginViewModel {
     let registerUser = PublishSubject<String>()
     
     init() {
-        registerUser.subscribe(onNext: User.registerUser(name:)).disposed(by: disposeBag)
+        registerUser.subscribe(onNext: User.shared.registerUser(name:)).disposed(by: disposeBag)
     }
     
     private let disposeBag = DisposeBag()

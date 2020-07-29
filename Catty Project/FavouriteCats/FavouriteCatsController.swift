@@ -29,8 +29,7 @@ class FavouriteCatsController: UIViewController {
     }
     
     override func loadView() {
-        super.loadView()
-        setupLayout()
+        view = setupLayout()
     }
     
     override func viewDidLoad() {
@@ -41,9 +40,15 @@ class FavouriteCatsController: UIViewController {
         setupBindigs()
     }
     
-    private func setupLayout() {
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.setupNormal()
+    }
+    
+    private func setupLayout() -> UIView {
+        let view = UIView()
         view.sv(collectionView)
         collectionView.fillContainer()
+        return view
     }
     
     private let disposeBag = DisposeBag()

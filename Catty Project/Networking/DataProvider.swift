@@ -12,6 +12,8 @@ import Kingfisher
 import RxSwift
 
 final class DataProvider {
+    private init() { }
+    
     private(set) static var shared = DataProvider()
     
     class func refreshShared() {

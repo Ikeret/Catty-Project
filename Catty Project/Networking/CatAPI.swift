@@ -80,7 +80,7 @@ extension CatAPI: TargetType {
     }
 
     public var task: Task {
-        let sub_id = User.sub_id
+        let sub_id = User.shared.sub_id
         switch self {
         case .getCategoriesList, .deleteImageFromFavourite, .deleteVote, .deleteUploadedImage, .getImageAnalysis:
             return .requestPlain
@@ -101,12 +101,12 @@ extension CatAPI: TargetType {
                                       encoding: JSONEncoding.default)
         case .getImagesFromPage(let page):
             var params: [String: Any] = ["size": "full",
-                                         "order": User.sorting,
+                                         "order": User.shared.sorting,
                                          "limit": pageLimit,
                                          "page": page,
                                          "format": "json"]
-            if User.categoryId != 0 { params["category_ids"] = User.categoryId }
-            if User.onlyGif { params["mime_types"] = "gif" }
+            if User.shared.categoryId != 0 { params["category_ids"] = User.shared.categoryId }
+            if User.shared.onlyGif { params["mime_types"] = "gif" }
             return .requestParameters(parameters: params,
                                       encoding: URLEncoding.default)
         case .getImage(let image_id):

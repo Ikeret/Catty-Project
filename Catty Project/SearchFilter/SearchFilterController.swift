@@ -48,10 +48,9 @@ class SearchFilterController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func loadView() {
-        super.loadView()
-        setupLayout()
+        view = setupLayout()
     }
 
     override func viewDidLoad() {
@@ -59,8 +58,13 @@ class SearchFilterController: UIViewController {
         navigationItem.title = viewModel.title
         setupBindigns()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.setupNormal()
+    }
 
-    private func setupLayout() {
+    private func setupLayout() -> UIView {
+        let view = UIView()
         view.backgroundColor = .systemBackground
 
         let sortLabel = UILabel().style { $0.text = "Sorted by:" }
@@ -82,7 +86,7 @@ class SearchFilterController: UIViewController {
         view.sv(tableView, categoryLabel, sortView, gifView, applyButton)
 
         view.layout(
-            120,
+            50,
             |-16-sortView-16-|,
             32,
             |-16-gifView-16-|,
@@ -94,6 +98,7 @@ class SearchFilterController: UIViewController {
             |-16-applyButton-16-|,
             40
         )
+        return view
     }
 
     private let disposeBag = DisposeBag()

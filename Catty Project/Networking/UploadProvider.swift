@@ -12,6 +12,8 @@ import Kingfisher
 import RxSwift
 
 final class UploadProvider {
+    private init() { }
+    
     static let shared = UploadProvider()
 
     private let provider = MoyaProvider<CatAPI>()

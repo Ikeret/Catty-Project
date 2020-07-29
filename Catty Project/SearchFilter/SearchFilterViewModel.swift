@@ -19,9 +19,9 @@ final class SearchFilterViewModel {
     let onApplySettings = PublishSubject<Void>()
     let onSettingsChanged = PublishSubject<Bool>()
 
-    private(set) var sorting = User.sorting
-    private(set) var onlyGif = User.onlyGif
-    private(set) var categoryId = User.categoryId
+    private(set) var sorting = User.shared.sorting
+    private(set) var onlyGif = User.shared.onlyGif
+    private(set) var categoryId = User.shared.categoryId
 
     init() {
         setupBindings()
@@ -45,14 +45,15 @@ final class SearchFilterViewModel {
         }).disposed(by: disposeBag)
 
         onApplySettings.subscribe(onNext: { [weak self] in
-            guard let strongSelf = self else { return }
-            if User.sorting != strongSelf.sorting || User.onlyGif != strongSelf.onlyGif ||
-                User.categoryId != strongSelf.categoryId {
-                User.sorting = strongSelf.sorting
-                User.onlyGif = strongSelf.onlyGif
-                User.categoryId = strongSelf.categoryId
-                strongSelf.onSettingsChanged.onNext(true)
-            } else { strongSelf.onSettingsChanged.onNext(false) }
+            guard let sSelf = self else { return }
+            if User.shared.sorting != sSelf.sorting ||
+                User.shared.onlyGif != sSelf.onlyGif || User.shared.categoryId != sSelf.categoryId {
+                
+                User.shared .sorting = sSelf.sorting
+                User.shared.onlyGif = sSelf.onlyGif
+                User.shared.categoryId = sSelf.categoryId
+                sSelf.onSettingsChanged.onNext(true)
+            } else { sSelf.onSettingsChanged.onNext(false) }
 
         }).disposed(by: disposeBag)
     }

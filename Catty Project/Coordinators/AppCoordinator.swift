@@ -18,7 +18,7 @@ final class AppCoordinator: BaseCoordinator<Void> {
     }
 
     override func start() -> Observable<Void> {
-        if User.registerLastUser() {
+        if User.shared.registerLastUser() {
             showContent()
         } else {
             showLogin()
@@ -34,7 +34,7 @@ final class AppCoordinator: BaseCoordinator<Void> {
     private func showContent() {
         coordinate(to: TabBarCoordinator(window: window)).map { _ in}
             .subscribe(onNext: { [weak self] in
-                User.logOut()
+                User.shared.logOut()
                 self?.showLogin()
             }).disposed(by: bag)
     }

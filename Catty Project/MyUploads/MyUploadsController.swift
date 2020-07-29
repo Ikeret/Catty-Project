@@ -41,8 +41,7 @@ class MyUploadsController: UIViewController, UINavigationControllerDelegate {
     }
     
     override func loadView() {
-        super.loadView()
-        setupLayout()
+        view = setupLayout()
     }
     
     override func viewDidLoad() {
@@ -53,12 +52,18 @@ class MyUploadsController: UIViewController, UINavigationControllerDelegate {
         setupBindings()
     }
     
-    private func setupLayout() {
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.setupNormal()
+    }
+    
+    private func setupLayout() -> UIView {
+        let view = UIView()
         view.sv(collectionView)
         collectionView.fillContainer()
         
         view.sv(activityIndicator)
         activityIndicator.centerInContainer()
+        return view
     }
     
     private let disposeBag = DisposeBag()

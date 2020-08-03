@@ -81,4 +81,15 @@ final class RequestManager {
             }
         }
     }
+    
+    func getImageAnalysis(image_id: String) -> Single<CatAnalysis> {
+        Single<CatAnalysis>.create { [weak self] single in
+            let request = self?.provider.rx.request(.getImageAnalysis(image_id)).map([CatAnalysis].self)
+                .subscribe(onSuccess: { model in
+                    single(.success(model.first ?? CatAnalysis(labels: [])))
+                }, onError: { single(.error($0)) })
+            
+            return Disposables.create { request?.dispose() }
+        }
+    }
 }

@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import Stevia
 
-class CatDetailController: UIViewController {
+final class CatDetailController: UIViewController {
     private let viewModel: CatDetailViewModel
 
     private let imageView = UIImageView().style { $0.contentMode = .scaleAspectFill; $0.clipsToBounds = true }

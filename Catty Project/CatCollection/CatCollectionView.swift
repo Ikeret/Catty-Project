@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class CatCollectionView: UICollectionView {
+final class CatCollectionView: UICollectionView {
 
     init() {
         let flowLayout = UICollectionViewFlowLayout()

@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import Stevia
 
-class LoginController: UIViewController {
+final class LoginController: UIViewController {
     
     let viewModel: LoginViewModel
     

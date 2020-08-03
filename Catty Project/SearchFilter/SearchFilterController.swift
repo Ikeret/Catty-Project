@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import Stevia
 
-class SearchFilterController: UIViewController {
+final class SearchFilterController: UIViewController {
 
     private let viewModel: SearchFilterViewModel
 
@@ -121,7 +121,7 @@ class SearchFilterController: UIViewController {
             }
             }).disposed(by: disposeBag)
 
-        tableView.rx.modelSelected(Category.self).bind(to: viewModel.selectedCategory).disposed(by: disposeBag)
+        tableView.rx.modelSelected(CatCategory.self).bind(to: viewModel.selectedCategory).disposed(by: disposeBag)
         
         sortControl.rx.selectedSegmentIndex.skip(1).subscribe(onNext: { [weak self] in
             guard let strongSelf = self else { return }

@@ -11,7 +11,7 @@ import RxSwift
 import Stevia
 import Kingfisher
 
-class CatCell: UICollectionViewCell {
+final class CatCell: UICollectionViewCell {
     static let id = "CatCell"
 
     private let catImageView: UIImageView

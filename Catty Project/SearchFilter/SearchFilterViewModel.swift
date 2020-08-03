@@ -11,11 +11,11 @@ import RxSwift
 
 final class SearchFilterViewModel {
     let title = "Search filter"
-    let categories = BehaviorSubject<[Category]>(value: [])
+    let categories = BehaviorSubject<[CatCategory]>(value: [])
 
     let selectedSort = PublishSubject<String>()
     let gifIsOn = PublishSubject<Bool>()
-    let selectedCategory = PublishSubject<Category>()
+    let selectedCategory = PublishSubject<CatCategory>()
     let onApplySettings = PublishSubject<Void>()
     let onSettingsChanged = PublishSubject<Bool>()
 

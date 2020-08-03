@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class CatImagesController: UIViewController {
+final class CatImagesController: UIViewController {
     private let collectionView = CatCollectionView()
 
     private let filterButton = UIBarButtonItem().style {

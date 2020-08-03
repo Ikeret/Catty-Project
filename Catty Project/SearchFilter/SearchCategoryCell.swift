@@ -9,7 +9,7 @@
 import UIKit
 import Stevia
 
-class SearchCategoryCell: UITableViewCell {
+final class SearchCategoryCell: UITableViewCell {
     static let id = "CategoryCell"
 
     private let titleLabel: UILabel

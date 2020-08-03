@@ -7,7 +7,20 @@
 		<key>Catty Project.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>10</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>18826A9D24D7000B002306DE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>18A949F724BEE1F5004AD052</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

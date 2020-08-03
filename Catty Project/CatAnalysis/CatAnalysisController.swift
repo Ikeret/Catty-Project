@@ -11,7 +11,7 @@ import Stevia
 import RxSwift
 import Kingfisher
 
-class CatAnalysisController: UIViewController {
+final class CatAnalysisController: UIViewController {
     
     private let imageView = UIImageView().style {
         $0.contentMode = .scaleAspectFill

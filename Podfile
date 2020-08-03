@@ -18,4 +18,8 @@ target 'Catty Project' do
   # Reactive
   pod 'RxSwift'
   pod 'RxCocoa'
+
+  target 'Catty Project Tests' do
+
+  end
 end

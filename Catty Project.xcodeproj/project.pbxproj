@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12096678524057F533A554D6 /* Pods_Catty_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B073BA2D5E5383259AF1B0D2 /* Pods_Catty_Project.framework */; };
 		181035B124D02A3A00343AF3 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181035B024D02A3A00343AF3 /* UINavigationBar.swift */; };
+		181CAC3624D7E53B006E988C /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CAC3524D7E53B006E988C /* Int.swift */; };
 		1863CDE424C1D23200D0E33D /* CatDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863CDE324C1D23200D0E33D /* CatDetailController.swift */; };
 		1863CDE624C1D30F00D0E33D /* CatDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863CDE524C1D30F00D0E33D /* CatDetailViewModel.swift */; };
 		1863CDE824C3941000D0E33D /* FavouriteCatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863CDE724C3940F00D0E33D /* FavouriteCatsController.swift */; };
 		1863CDEA24C3948B00D0E33D /* FavouriteCatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863CDE924C3948B00D0E33D /* FavouriteCatsViewModel.swift */; };
 		187D0BC524C9BB2E006FC6BA /* CatCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187D0BC424C9BB2E006FC6BA /* CatCollectionView.swift */; };
+		18826AA124D7000B002306DE /* GetRequests_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18826AA024D7000B002306DE /* GetRequests_Test.swift */; };
+		18826AAB24D7576F002306DE /* VoteFavourite_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18826AAA24D7576F002306DE /* VoteFavourite_Test.swift */; };
+		18826AAD24D757A0002306DE /* Upload_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18826AAC24D757A0002306DE /* Upload_Test.swift */; };
 		189A2F6424CAD2840014687E /* CatAnalysisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189A2F6324CAD2840014687E /* CatAnalysisViewModel.swift */; };
 		189A2F6624CAD2B70014687E /* CatAnalysisController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189A2F6524CAD2B70014687E /* CatAnalysisController.swift */; };
 		18A949FC24BEE1F5004AD052 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A949FB24BEE1F5004AD052 /* AppDelegate.swift */; };
@@ -32,7 +37,7 @@
 		18DF4DA024CB1003008A344F /* CatDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4D9F24CB1003008A344F /* CatDetailCoordinator.swift */; };
 		18DF4DA224CB102C008A344F /* MyUploadsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4DA124CB102C008A344F /* MyUploadsCoordinator.swift */; };
 		18DF4DA424CB1045008A344F /* CatAnalysisCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4DA324CB1045008A344F /* CatAnalysisCoordinator.swift */; };
-		18FA511024C5BF89000FAC5F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA510F24C5BF89000FAC5F /* Category.swift */; };
+		18FA511024C5BF89000FAC5F /* CatCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA510F24C5BF89000FAC5F /* CatCategory.swift */; };
 		18FA511224C72017000FAC5F /* SearchCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA511124C72017000FAC5F /* SearchCategoryCell.swift */; };
 		18FA511724C834DF000FAC5F /* MyUploadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA511624C834DF000FAC5F /* MyUploadsViewModel.swift */; };
 		18FA511924C8351B000FAC5F /* MyUploadsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA511824C8351B000FAC5F /* MyUploadsController.swift */; };
@@ -51,16 +56,32 @@
 		18FBF86E24C59ADA0013178E /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FBF86D24C59AD90013178E /* Vote.swift */; };
 		18FBF87024C5BD920013178E /* SearchFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FBF86F24C5BD920013178E /* SearchFilterController.swift */; };
 		18FBF87324C5BE0F0013178E /* SearchFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FBF87224C5BE0F0013178E /* SearchFilterViewModel.swift */; };
-		6547931B82A2B18F5F12E94F /* Pods_Catty_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A463FC14F2E9F510CAFA742B /* Pods_Catty_Project.framework */; };
+		F1F5E5DF9FED367B4045BE45 /* Pods_Catty_Project_Catty_Project_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E401BB523B394C3F5F435A35 /* Pods_Catty_Project_Catty_Project_Tests.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		18826AA324D7000B002306DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18A949F024BEE1F5004AD052 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 18A949F724BEE1F5004AD052;
+			remoteInfo = "Catty Project";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		181035B024D02A3A00343AF3 /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
+		181CAC3524D7E53B006E988C /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		1863CDE324C1D23200D0E33D /* CatDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailController.swift; sourceTree = "<group>"; };
 		1863CDE524C1D30F00D0E33D /* CatDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailViewModel.swift; sourceTree = "<group>"; };
 		1863CDE724C3940F00D0E33D /* FavouriteCatsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCatsController.swift; sourceTree = "<group>"; };
 		1863CDE924C3948B00D0E33D /* FavouriteCatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCatsViewModel.swift; sourceTree = "<group>"; };
 		187D0BC424C9BB2E006FC6BA /* CatCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCollectionView.swift; sourceTree = "<group>"; };
+		18826A9E24D7000B002306DE /* Catty Project Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Catty Project Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		18826AA024D7000B002306DE /* GetRequests_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRequests_Test.swift; sourceTree = "<group>"; };
+		18826AA224D7000B002306DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18826AAA24D7576F002306DE /* VoteFavourite_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteFavourite_Test.swift; sourceTree = "<group>"; };
+		18826AAC24D757A0002306DE /* Upload_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upload_Test.swift; sourceTree = "<group>"; };
 		189A2F6324CAD2840014687E /* CatAnalysisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAnalysisViewModel.swift; sourceTree = "<group>"; };
 		189A2F6524CAD2B70014687E /* CatAnalysisController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAnalysisController.swift; sourceTree = "<group>"; };
 		18A949F824BEE1F5004AD052 /* Catty Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Catty Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,7 +104,7 @@
 		18DF4D9F24CB1003008A344F /* CatDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailCoordinator.swift; sourceTree = "<group>"; };
 		18DF4DA124CB102C008A344F /* MyUploadsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUploadsCoordinator.swift; sourceTree = "<group>"; };
 		18DF4DA324CB1045008A344F /* CatAnalysisCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAnalysisCoordinator.swift; sourceTree = "<group>"; };
-		18FA510F24C5BF89000FAC5F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		18FA510F24C5BF89000FAC5F /* CatCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCategory.swift; sourceTree = "<group>"; };
 		18FA511124C72017000FAC5F /* SearchCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryCell.swift; sourceTree = "<group>"; };
 		18FA511624C834DF000FAC5F /* MyUploadsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUploadsViewModel.swift; sourceTree = "<group>"; };
 		18FA511824C8351B000FAC5F /* MyUploadsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUploadsController.swift; sourceTree = "<group>"; };
@@ -102,17 +123,28 @@
 		18FBF86D24C59AD90013178E /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
 		18FBF86F24C5BD920013178E /* SearchFilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterController.swift; sourceTree = "<group>"; };
 		18FBF87224C5BE0F0013178E /* SearchFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterViewModel.swift; sourceTree = "<group>"; };
-		A463FC14F2E9F510CAFA742B /* Pods_Catty_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catty_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1FD99239C94D983A58068D5 /* Pods-Catty Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catty Project.debug.xcconfig"; path = "Target Support Files/Pods-Catty Project/Pods-Catty Project.debug.xcconfig"; sourceTree = "<group>"; };
-		D1990AA763D71746B2C134DF /* Pods-Catty Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catty Project.release.xcconfig"; path = "Target Support Files/Pods-Catty Project/Pods-Catty Project.release.xcconfig"; sourceTree = "<group>"; };
+		35E6807B49117CFE71031332 /* Pods-Catty Project-Catty Project Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catty Project-Catty Project Tests.release.xcconfig"; path = "Target Support Files/Pods-Catty Project-Catty Project Tests/Pods-Catty Project-Catty Project Tests.release.xcconfig"; sourceTree = "<group>"; };
+		8904639943776EE276EC3180 /* Pods-Catty Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catty Project.release.xcconfig"; path = "Target Support Files/Pods-Catty Project/Pods-Catty Project.release.xcconfig"; sourceTree = "<group>"; };
+		9E201E2726F3B60317AE7FCC /* Pods-Catty Project-Catty Project Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catty Project-Catty Project Tests.debug.xcconfig"; path = "Target Support Files/Pods-Catty Project-Catty Project Tests/Pods-Catty Project-Catty Project Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		B073BA2D5E5383259AF1B0D2 /* Pods_Catty_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catty_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E401BB523B394C3F5F435A35 /* Pods_Catty_Project_Catty_Project_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catty_Project_Catty_Project_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4271982BCB0DB205DD609FB /* Pods-Catty Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catty Project.debug.xcconfig"; path = "Target Support Files/Pods-Catty Project/Pods-Catty Project.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		18826A9B24D7000B002306DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1F5E5DF9FED367B4045BE45 /* Pods_Catty_Project_Catty_Project_Tests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		18A949F524BEE1F5004AD052 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6547931B82A2B18F5F12E94F /* Pods_Catty_Project.framework in Frameworks */,
+				12096678524057F533A554D6 /* Pods_Catty_Project.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +182,25 @@
 			path = FavouriteCats;
 			sourceTree = "<group>";
 		};
+		18826A9F24D7000B002306DE /* Catty Project Tests */ = {
+			isa = PBXGroup;
+			children = (
+				18826AAE24D757F9002306DE /* CatAPI Tests */,
+				18826AA224D7000B002306DE /* Info.plist */,
+			);
+			path = "Catty Project Tests";
+			sourceTree = "<group>";
+		};
+		18826AAE24D757F9002306DE /* CatAPI Tests */ = {
+			isa = PBXGroup;
+			children = (
+				18826AA024D7000B002306DE /* GetRequests_Test.swift */,
+				18826AAA24D7576F002306DE /* VoteFavourite_Test.swift */,
+				18826AAC24D757A0002306DE /* Upload_Test.swift */,
+			);
+			path = "CatAPI Tests";
+			sourceTree = "<group>";
+		};
 		189A2F6224CAD0430014687E /* CatAnalysis */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,9 +216,10 @@
 			children = (
 				18A94A1F24BEED4E004AD052 /* README.md */,
 				18A949FA24BEE1F5004AD052 /* Catty Project */,
+				18826A9F24D7000B002306DE /* Catty Project Tests */,
 				18A949F924BEE1F5004AD052 /* Products */,
 				921CD557D2F2C65A46EDD736 /* Pods */,
-				A05C5F38C37A8CFFA93BFA19 /* Frameworks */,
+				EA75C99E92459CE6B1896ADA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				18A949F824BEE1F5004AD052 /* Catty Project.app */,
+				18826A9E24D7000B002306DE /* Catty Project Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -232,7 +285,7 @@
 				18FB5FDE24C0703E00F579F6 /* FavouriteImage.swift */,
 				18FBF86924C49A050013178E /* CatDetail.swift */,
 				18FBF86D24C59AD90013178E /* Vote.swift */,
-				18FA510F24C5BF89000FAC5F /* Category.swift */,
+				18FA510F24C5BF89000FAC5F /* CatCategory.swift */,
 				18DF4D9724CAD43F008A344F /* CatAnalysis.swift */,
 			);
 			path = Models;
@@ -271,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				181035B024D02A3A00343AF3 /* UINavigationBar.swift */,
+				181CAC3524D7E53B006E988C /* Int.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -289,16 +343,19 @@
 		921CD557D2F2C65A46EDD736 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B1FD99239C94D983A58068D5 /* Pods-Catty Project.debug.xcconfig */,
-				D1990AA763D71746B2C134DF /* Pods-Catty Project.release.xcconfig */,
+				F4271982BCB0DB205DD609FB /* Pods-Catty Project.debug.xcconfig */,
+				8904639943776EE276EC3180 /* Pods-Catty Project.release.xcconfig */,
+				9E201E2726F3B60317AE7FCC /* Pods-Catty Project-Catty Project Tests.debug.xcconfig */,
+				35E6807B49117CFE71031332 /* Pods-Catty Project-Catty Project Tests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		A05C5F38C37A8CFFA93BFA19 /* Frameworks */ = {
+		EA75C99E92459CE6B1896ADA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A463FC14F2E9F510CAFA742B /* Pods_Catty_Project.framework */,
+				B073BA2D5E5383259AF1B0D2 /* Pods_Catty_Project.framework */,
+				E401BB523B394C3F5F435A35 /* Pods_Catty_Project_Catty_Project_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -306,15 +363,35 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		18826A9D24D7000B002306DE /* Catty Project Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18826AA724D7000B002306DE /* Build configuration list for PBXNativeTarget "Catty Project Tests" */;
+			buildPhases = (
+				09C3359E89C09AB8C819030B /* [CP] Check Pods Manifest.lock */,
+				18826A9A24D7000B002306DE /* Sources */,
+				18826A9B24D7000B002306DE /* Frameworks */,
+				18826A9C24D7000B002306DE /* Resources */,
+				B317CBEA717B12DAD10C09F8 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18826AA424D7000B002306DE /* PBXTargetDependency */,
+			);
+			name = "Catty Project Tests";
+			productName = "Catty Project Tests";
+			productReference = 18826A9E24D7000B002306DE /* Catty Project Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		18A949F724BEE1F5004AD052 /* Catty Project */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18A94A0C24BEE1F8004AD052 /* Build configuration list for PBXNativeTarget "Catty Project" */;
 			buildPhases = (
-				A91F447DBD27A75B4A2BA87C /* [CP] Check Pods Manifest.lock */,
+				15E6AC4AA4ABDEDC4F15B47A /* [CP] Check Pods Manifest.lock */,
 				18A949F424BEE1F5004AD052 /* Sources */,
 				18A949F524BEE1F5004AD052 /* Frameworks */,
 				18A949F624BEE1F5004AD052 /* Resources */,
-				DD4D570D45940C115D3CE5AF /* [CP] Embed Pods Frameworks */,
+				4AF30B468491DA28B768E218 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -331,10 +408,14 @@
 		18A949F024BEE1F5004AD052 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Sergey Korshunov";
 				TargetAttributes = {
+					18826A9D24D7000B002306DE = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 18A949F724BEE1F5004AD052;
+					};
 					18A949F724BEE1F5004AD052 = {
 						CreatedOnToolsVersion = 11.5;
 					};
@@ -354,11 +435,19 @@
 			projectRoot = "";
 			targets = (
 				18A949F724BEE1F5004AD052 /* Catty Project */,
+				18826A9D24D7000B002306DE /* Catty Project Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		18826A9C24D7000B002306DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		18A949F624BEE1F5004AD052 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -371,7 +460,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A91F447DBD27A75B4A2BA87C /* [CP] Check Pods Manifest.lock */ = {
+		09C3359E89C09AB8C819030B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Catty Project-Catty Project Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		15E6AC4AA4ABDEDC4F15B47A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -393,7 +504,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DD4D570D45940C115D3CE5AF /* [CP] Embed Pods Frameworks */ = {
+		4AF30B468491DA28B768E218 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -410,9 +521,36 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Catty Project/Pods-Catty Project-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B317CBEA717B12DAD10C09F8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Catty Project-Catty Project Tests/Pods-Catty Project-Catty Project Tests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Catty Project-Catty Project Tests/Pods-Catty Project-Catty Project Tests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Catty Project-Catty Project Tests/Pods-Catty Project-Catty Project Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		18826A9A24D7000B002306DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18826AAD24D757A0002306DE /* Upload_Test.swift in Sources */,
+				18826AA124D7000B002306DE /* GetRequests_Test.swift in Sources */,
+				18826AAB24D7576F002306DE /* VoteFavourite_Test.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		18A949F424BEE1F5004AD052 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -433,6 +571,7 @@
 				18A94A2124BF0B6A004AD052 /* CatAPI.swift in Sources */,
 				18FA511924C8351B000FAC5F /* MyUploadsController.swift in Sources */,
 				18DF4DA424CB1045008A344F /* CatAnalysisCoordinator.swift in Sources */,
+				181CAC3624D7E53B006E988C /* Int.swift in Sources */,
 				18FBF87024C5BD920013178E /* SearchFilterController.swift in Sources */,
 				18DF4D9E24CB0FED008A344F /* FavouriteCatsCoordinator.swift in Sources */,
 				18FBF86A24C49A050013178E /* CatDetail.swift in Sources */,
@@ -443,7 +582,7 @@
 				18FA511B24C84202000FAC5F /* UploadProvider.swift in Sources */,
 				18A949FC24BEE1F5004AD052 /* AppDelegate.swift in Sources */,
 				18FBF86824C48C190013178E /* CatCellViewModel.swift in Sources */,
-				18FA511024C5BF89000FAC5F /* Category.swift in Sources */,
+				18FA511024C5BF89000FAC5F /* CatCategory.swift in Sources */,
 				18FA512124C85337000FAC5F /* LoginViewModel.swift in Sources */,
 				18FA511224C72017000FAC5F /* SearchCategoryCell.swift in Sources */,
 				18DF4D9824CAD43F008A344F /* CatAnalysis.swift in Sources */,
@@ -464,6 +603,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		18826AA424D7000B002306DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 18A949F724BEE1F5004AD052 /* Catty Project */;
+			targetProxy = 18826AA324D7000B002306DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		18A94A0624BEE1F8004AD052 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -476,6 +623,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		18826AA524D7000B002306DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E201E2726F3B60317AE7FCC /* Pods-Catty Project-Catty Project Tests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8PJ9SKJ9FA;
+				INFOPLIST_FILE = "Catty Project Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "sergeykorshunov.Catty-Project-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Catty Project.app/Catty Project";
+			};
+			name = Debug;
+		};
+		18826AA624D7000B002306DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35E6807B49117CFE71031332 /* Pods-Catty Project-Catty Project Tests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8PJ9SKJ9FA;
+				INFOPLIST_FILE = "Catty Project Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "sergeykorshunov.Catty-Project-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Catty Project.app/Catty Project";
+			};
+			name = Release;
+		};
 		18A94A0A24BEE1F8004AD052 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -592,7 +783,7 @@
 		};
 		18A94A0D24BEE1F8004AD052 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B1FD99239C94D983A58068D5 /* Pods-Catty Project.debug.xcconfig */;
+			baseConfigurationReference = F4271982BCB0DB205DD609FB /* Pods-Catty Project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -611,7 +802,7 @@
 		};
 		18A94A0E24BEE1F8004AD052 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1990AA763D71746B2C134DF /* Pods-Catty Project.release.xcconfig */;
+			baseConfigurationReference = 8904639943776EE276EC3180 /* Pods-Catty Project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -631,6 +822,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		18826AA724D7000B002306DE /* Build configuration list for PBXNativeTarget "Catty Project Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18826AA524D7000B002306DE /* Debug */,
+				18826AA624D7000B002306DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		18A949F324BEE1F5004AD052 /* Build configuration list for PBXProject "Catty Project" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

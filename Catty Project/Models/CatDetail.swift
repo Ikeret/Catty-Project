@@ -17,29 +17,46 @@ struct CatDetail: Decodable {
 
 // MARK: - Breed
 struct Breed: Decodable {
-    let adaptability, affection_level: Int
-    let alt_names: String?
-    let cfa_url: String?
-    let child_friendly: Int
-    let country_code, country_codes: String
-    let cat_detail_description: String?
-    let dog_friendly, energy_level, experimental, grooming: Int
-    let hairless, health_issues, hypoallergenic: Int
     let id: String
-    let indoor, intelligence: Int
-    let lap: Int?
+    
     let life_span, name: String
-    let natural: Int
+    let alt_names: String?
     let origin: String
-    let rare, rex, shedding_level, short_legs: Int
-    let social_needs, stranger_friendly, suppressed_tail: Int
-    let temperament: String
-    let vcahospitals_url: String?
-    let vetstreet_url: String?
-    let vocalisation: Int
+    let description: String
     let weight: Weight
+    let temperament: String
+    let country_code: String
+
+    // marks 0 or 1
+    let experimental: Int
+    let hairless: Int
+    let hypoallergenic: Int
+    let natural: Int
+    let rare: Int
+    let rex: Int
+    let short_legs: Int
+    let suppressed_tail: Int
+    
+    // stars from 1 to 5
+    let adaptability: Int
+    let affection_level: Int
+    let child_friendly: Int
+    let cat_friendly: Int?
+    let dog_friendly: Int
+    let energy_level: Int
+    let grooming: Int
+    let health_issues: Int
+    let intelligence: Int
+    let shedding_level: Int
+    let social_needs: Int
+    let stranger_friendly: Int
+    let vocalisation: Int
+    
+    // urls
     let wikipedia_url: String?
-    let bidability, cat_friendly: Int?
+    let vetstreet_url: String?
+    let vcahospitals_url: String?
+    let cfa_url: String?
 }
 
 // MARK: - Weight

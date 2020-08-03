@@ -1,5 +1,5 @@
 //
-//  Category.swift
+//  CatCategory.swift
 //  Catty Project
 //
 //  Created by Сергей Коршунов on 20.07.2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Category: Decodable {
+struct CatCategory: Decodable {
     let id: Int
     let name: String
 }

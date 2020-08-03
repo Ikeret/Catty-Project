@@ -111,18 +111,12 @@ final class DataProvider {
             .disposed(by: disposeBag)
     }
 
-    func deleteVote(vote_id: Int) {
-        provider.rx.request(.deleteVote(vote_id))
-            .mapJSON().subscribe(onSuccess: { debugPrint($0)})
-            .disposed(by: disposeBag)
-    }
-
-    func getCategoriesList() -> Observable<[Category]> {
+    func getCategoriesList() -> Observable<[CatCategory]> {
         return Observable.create { [provider] observer in
             provider.rx.request(.getCategoriesList)
-                .map([Category].self).subscribe(onSuccess: {
+                .map([CatCategory].self).subscribe(onSuccess: {
                     var categories = $0
-                    categories.insert(Category(id: 0, name: "All"), at: 0)
+                    categories.insert(CatCategory(id: 0, name: "All"), at: 0)
                     observer.onNext(categories)
                 })
         }

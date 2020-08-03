@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class FavouriteCatsController: UIViewController {
+final class FavouriteCatsController: UIViewController {
     
     private let collectionView = CatCollectionView()
     

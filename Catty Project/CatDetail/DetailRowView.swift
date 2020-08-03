@@ -55,6 +55,11 @@ final class DetailRowView: UIView {
 
         sv(stackView)
         stackView.fillContainer()
+        
+        if leading.isEmpty {
+            leadingLabel.isHidden = true
+            trailingLabel.textAlignment = .justified
+        }
     }
 
     private func setupStats(leading: String, stats: Int) {
@@ -70,7 +75,7 @@ final class DetailRowView: UIView {
         stackView.addArrangedSubview(leadingLabel)
 
         for count in 1...5 {
-            if count < stats {
+            if count <= stats {
                 let filledStar = UIImageView(image: UIImage(systemName: "star.fill"))
                 statsStackView.addArrangedSubview(filledStar)
             } else {

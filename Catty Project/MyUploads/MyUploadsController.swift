@@ -10,14 +10,12 @@ import UIKit
 import Stevia
 import RxSwift
 
-class MyUploadsController: UIViewController, UINavigationControllerDelegate {
+final class MyUploadsController: UIViewController, UINavigationControllerDelegate {
     
     private let viewModel: MyUploadsViewModel
     
     private let collectionView = CatCollectionView()
-    
-//    private let imagePicker = UIImagePickerController()
-    
+        
     private let activityIndicator = UIActivityIndicatorView(style: .large).style {
         $0.size(70)
         $0.backgroundColor = .systemBackground

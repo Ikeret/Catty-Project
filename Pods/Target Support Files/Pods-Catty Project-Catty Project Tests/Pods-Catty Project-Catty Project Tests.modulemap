@@ -1,0 +1,6 @@
+framework module Pods_Catty_Project_Catty_Project_Tests {
+  umbrella header "Pods-Catty Project-Catty Project Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

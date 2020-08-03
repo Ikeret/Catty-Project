@@ -30,7 +30,10 @@ final class SearchFilterViewModel {
     private let disposeBag = DisposeBag()
 
     private func setupBindings() {
-        DataProvider.shared.getCategoriesList().bind(to: categories).disposed(by: disposeBag)
+        let requestManager = RequestManager()
+        requestManager.getCategoriesList().subscribe(onSuccess: { [weak self] in
+            self?.categories.onNext($0)
+        }).disposed(by: disposeBag)
 
         selectedSort.subscribe(onNext: { [weak self] in
             self?.sorting = $0

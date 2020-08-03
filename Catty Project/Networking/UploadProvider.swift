@@ -12,13 +12,12 @@ import Kingfisher
 import RxSwift
 
 final class UploadProvider {
-    private init() { }
-    
-    static let shared = UploadProvider()
 
     private let provider = MoyaProvider<CatAPI>()
 
     let catImages = PublishSubject<[CatCellViewModel]>()
+    
+    let disposeBag = DisposeBag()
 
     struct UploadResponse: Decodable {
         let url: String?
@@ -81,5 +80,4 @@ final class UploadProvider {
         }
     }
 
-    let disposeBag = DisposeBag()
 }

@@ -12,7 +12,7 @@ import RxCocoa
 
 final class MyUploadsViewModel {
     let title = "My Uploads"
-    private let provider = UploadProvider.shared
+    private let provider = UploadProvider()
 
     let modelSelected = PublishSubject<CatAnalysisViewModel>()
     let showPicker = PublishSubject<UIImagePickerController.SourceType>()

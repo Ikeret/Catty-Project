@@ -11,7 +11,7 @@ import RxSwift
 
 final class CatImagesViewModel {
 
-    private let dataProvider = DataProvider.shared
+    private let repository: CatImagesRepository
 
     let title = "Cat Images"
 
@@ -25,20 +25,21 @@ final class CatImagesViewModel {
     private(set) var isLoading = false
     private var page = 0
 
-    init() {
+    init(repository: CatImagesRepository = CatImagesRepository()) {
+        self.repository = repository
         loadNextPage()
         setupBindings()
     }
 
     func loadNextPage() {
         isLoading = true
-        dataProvider.loadCatImages(page: page)
+        repository.loadCatImages(page: page)
     }
 
     private let disposeBag = DisposeBag()
 
     private func setupBindings() {
-        dataProvider.catImages.subscribe(onNext: { [weak self] in
+        repository.catImages.subscribe(onNext: { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.storedItems.append(contentsOf: $0)
 
@@ -48,7 +49,7 @@ final class CatImagesViewModel {
 
         }).disposed(by: disposeBag)
 
-        dataProvider.favImages.subscribe(onNext: { [weak self] favImages in
+        repository.favImages.subscribe(onNext: { [weak self] favImages in
             guard let strongSelf = self else { return }
             var favIds = [String: String]()
             for id in favImages.map({ ($0.image.id, $0.id) }) {

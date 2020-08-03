@@ -61,7 +61,6 @@ final class User {
     }
     
     func logOut() {
-        DataProvider.refreshShared()
         lastUser = nil
         name = ""
         sub_id = ""

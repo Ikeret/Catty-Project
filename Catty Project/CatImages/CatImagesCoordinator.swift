@@ -11,10 +11,11 @@ import RxSwift
 
 final class CatImagesCoordinator: BaseCoordinator<CoordinationResult> {
     
-    let viewModel = CatImagesViewModel()
+    let viewModel: CatImagesViewModel
     let viewController: CatImagesController
     
-    override init(navigationController: UINavigationController? = nil) {
+    init(repository: CatImagesRepository, navigationController: UINavigationController? = nil) {
+        viewModel = CatImagesViewModel(repository: repository)
         viewController = CatImagesController(viewModel)
         super.init(navigationController: navigationController)
     }

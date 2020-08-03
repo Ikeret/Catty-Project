@@ -11,14 +11,20 @@ import RxSwift
 
 final class TabBarCoordinator: BaseCoordinator<CoordinationResult> {
     
-    private lazy var catImagesCoordinator = CatImagesCoordinator()
-    private lazy var favouriteCatsCoordinator = FavouriteCatsCoordinator()
-    private lazy var myUploadsCoordinator = MyUploadsCoordinator()
+    private let repository = CatImagesRepository()
+    
+    private var catImagesCoordinator: CatImagesCoordinator
+    private var favouriteCatsCoordinator: FavouriteCatsCoordinator
+    private var myUploadsCoordinator: MyUploadsCoordinator
 
     private let window: UIWindow
     
     init(window: UIWindow) {
         self.window = window
+        
+        catImagesCoordinator = CatImagesCoordinator(repository: repository)
+        favouriteCatsCoordinator = FavouriteCatsCoordinator(repository: repository)
+        myUploadsCoordinator = MyUploadsCoordinator()
     }
     
     override func start() -> Observable<CoordinationResult> {

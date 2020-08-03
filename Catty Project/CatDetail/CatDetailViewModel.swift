@@ -24,6 +24,8 @@ final class CatDetailViewModel {
     private(set) var detailStats = [[(name: String, value: Int)]]()
     private(set) var detailLinks = [[(key: String, value: String)]]()
     
+    let requestManager = RequestManager()
+    
     private let disposeBag = DisposeBag()
     
     init(image_id: String, image_url: URL?) {
@@ -38,11 +40,11 @@ final class CatDetailViewModel {
     }
     
     func changeVote(newValue: Int) {
-        DataProvider.shared.vote(image_id: image_id, value: newValue)
+        requestManager.vote(image_id: image_id, value: newValue)
     }
     
     private func prepareData() {
-        DataProvider.shared.loadImage(image_id: image_id).subscribe(onNext: { [weak self] catDetail in
+        requestManager.loadImage(image_id: image_id).subscribe(onSuccess: { [weak self] catDetail in
             debugPrint(catDetail)
             if let breeds = catDetail.breeds {
                 for breed in breeds {
@@ -113,7 +115,7 @@ final class CatDetailViewModel {
     }
     
     private func loadVote() {
-        DataProvider.shared.loadVote(image_id: image_id).subscribe(onNext: { [weak self] vote in
+        requestManager.loadVote(image_id: image_id).subscribe(onSuccess: { [weak self] vote in
             self?.vote = vote
             self?.onVoteLoaded.onCompleted()
         }).disposed(by: disposeBag)

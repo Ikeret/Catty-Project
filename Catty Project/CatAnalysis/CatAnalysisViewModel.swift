@@ -15,6 +15,7 @@ final class CatAnalysisViewModel {
     let image_url: URL?
     
     let displayRows = BehaviorSubject(value: [DetailRowView]())
+    let provider = UploadProvider()
     
     init(image_id: String, image_url: URL?) {
         self.image_id = image_id
@@ -26,7 +27,7 @@ final class CatAnalysisViewModel {
     private let disposeBag = DisposeBag()
     
     private func loadAnalisys() {
-        UploadProvider.shared.getImageAnalysis(image_id: image_id).map { $0.labels }
+        provider.getImageAnalysis(image_id: image_id).map { $0.labels }
             .subscribe(onSuccess: { [weak self] labels in
                 let displayLabels = labels.map {
                     DetailRowView(leading: $0.Name, trailing: String(format: "%5.2f %%", $0.Confidence))

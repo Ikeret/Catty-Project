@@ -12,7 +12,7 @@ import RxSwift
 final class FavouriteCatsViewModel {
     let title = "❤️ Cats"
 
-    private let dataProvider = DataProvider.shared
+    private let repository: CatImagesRepository
 
     let modelSelected = PublishSubject<CatDetailViewModel>()
     
@@ -23,11 +23,12 @@ final class FavouriteCatsViewModel {
 
     private var lastAddedFirst = true
 
-    init() {
-        dataProvider.loadFavourites()
+    init(repository: CatImagesRepository = CatImagesRepository()) {
+        self.repository = repository
+        repository.loadFavourites()
         loadNextPage()
 
-        dataProvider.favImages.subscribe(onNext: { [weak self] images in
+        repository.favImages.subscribe(onNext: { [weak self] images in
             guard let strongSelf = self else { return }
             var mapped = images.map {
                 CatCellViewModel(id: $0.image.id,

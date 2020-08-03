@@ -18,17 +18,23 @@ class CatCellViewModel {
     var favImageName: String {
         isFavourite ? "heart.fill" : "heart"
     }
+    
+    let requestManager = RequestManager()
+    let repository: CatImagesRepository?
 
-    init(id: String, image_url: String, favouriteId: String, isFavourite: Bool = false) {
+    init(id: String, image_url: String, favouriteId: String, repository: CatImagesRepository? = nil, isFavourite: Bool = false) {
         self.id = id
         self.image_url = URL(string: image_url)
         self.isFavourite = isFavourite
         self.favouriteId = favouriteId
+        self.repository = repository
     }
 
     func changeFavourite() {
         let id = isFavourite ? favouriteId : self.id
         isFavourite.toggle()
-        DataProvider.shared.changeFavourite(image_id: id, isFavourite: isFavourite)
+        requestManager.changeFavourite(image_id: id, isFavourite: isFavourite) { [weak self] in
+            self?.repository?.loadFavourites()
+        }
     }
 }

@@ -35,7 +35,7 @@ final class CatImagesController: UIViewController {
     }
 
     override func loadView() {
-        view = setupLayout()
+        view = setupLayout()        
     }
 
     override func viewDidLoad() {

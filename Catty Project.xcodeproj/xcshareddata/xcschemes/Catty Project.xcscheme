@@ -38,6 +38,16 @@
                ReferencedContainer = "container:Catty Project.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "188ABC9224D93D4900BFF01D"
+               BuildableName = "Catty Project UITests.xctest"
+               BlueprintName = "Catty Project UITests"
+               ReferencedContainer = "container:Catty Project.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

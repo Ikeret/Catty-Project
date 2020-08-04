@@ -19,6 +19,7 @@
 		18826AA124D7000B002306DE /* GetRequests_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18826AA024D7000B002306DE /* GetRequests_Test.swift */; };
 		18826AAB24D7576F002306DE /* VoteFavourite_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18826AAA24D7576F002306DE /* VoteFavourite_Test.swift */; };
 		18826AAD24D757A0002306DE /* Upload_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18826AAC24D757A0002306DE /* Upload_Test.swift */; };
+		188ABC9624D93D4900BFF01D /* Catty_Project_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188ABC9524D93D4900BFF01D /* Catty_Project_UITests.swift */; };
 		189A2F6424CAD2840014687E /* CatAnalysisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189A2F6324CAD2840014687E /* CatAnalysisViewModel.swift */; };
 		189A2F6624CAD2B70014687E /* CatAnalysisController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189A2F6524CAD2B70014687E /* CatAnalysisController.swift */; };
 		18A949FC24BEE1F5004AD052 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A949FB24BEE1F5004AD052 /* AppDelegate.swift */; };
@@ -68,6 +69,13 @@
 			remoteGlobalIDString = 18A949F724BEE1F5004AD052;
 			remoteInfo = "Catty Project";
 		};
+		188ABC9824D93D4900BFF01D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18A949F024BEE1F5004AD052 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 18A949F724BEE1F5004AD052;
+			remoteInfo = "Catty Project";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +92,9 @@
 		18826AA224D7000B002306DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18826AAA24D7576F002306DE /* VoteFavourite_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteFavourite_Test.swift; sourceTree = "<group>"; };
 		18826AAC24D757A0002306DE /* Upload_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upload_Test.swift; sourceTree = "<group>"; };
+		188ABC9324D93D4900BFF01D /* Catty Project UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Catty Project UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		188ABC9524D93D4900BFF01D /* Catty_Project_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catty_Project_UITests.swift; sourceTree = "<group>"; };
+		188ABC9724D93D4900BFF01D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		189A2F6324CAD2840014687E /* CatAnalysisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAnalysisViewModel.swift; sourceTree = "<group>"; };
 		189A2F6524CAD2B70014687E /* CatAnalysisController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAnalysisController.swift; sourceTree = "<group>"; };
 		18A949F824BEE1F5004AD052 /* Catty Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Catty Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +150,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1F5E5DF9FED367B4045BE45 /* Pods_Catty_Project_Catty_Project_Tests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		188ABC9024D93D4900BFF01D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +221,15 @@
 			path = "CatAPI Tests";
 			sourceTree = "<group>";
 		};
+		188ABC9424D93D4900BFF01D /* Catty Project UITests */ = {
+			isa = PBXGroup;
+			children = (
+				188ABC9524D93D4900BFF01D /* Catty_Project_UITests.swift */,
+				188ABC9724D93D4900BFF01D /* Info.plist */,
+			);
+			path = "Catty Project UITests";
+			sourceTree = "<group>";
+		};
 		189A2F6224CAD0430014687E /* CatAnalysis */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +246,7 @@
 				18A94A1F24BEED4E004AD052 /* README.md */,
 				18A949FA24BEE1F5004AD052 /* Catty Project */,
 				18826A9F24D7000B002306DE /* Catty Project Tests */,
+				188ABC9424D93D4900BFF01D /* Catty Project UITests */,
 				18A949F924BEE1F5004AD052 /* Products */,
 				921CD557D2F2C65A46EDD736 /* Pods */,
 				EA75C99E92459CE6B1896ADA /* Frameworks */,
@@ -230,6 +258,7 @@
 			children = (
 				18A949F824BEE1F5004AD052 /* Catty Project.app */,
 				18826A9E24D7000B002306DE /* Catty Project Tests.xctest */,
+				188ABC9324D93D4900BFF01D /* Catty Project UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -386,6 +415,24 @@
 			productReference = 18826A9E24D7000B002306DE /* Catty Project Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		188ABC9224D93D4900BFF01D /* Catty Project UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 188ABC9C24D93D4900BFF01D /* Build configuration list for PBXNativeTarget "Catty Project UITests" */;
+			buildPhases = (
+				188ABC8F24D93D4900BFF01D /* Sources */,
+				188ABC9024D93D4900BFF01D /* Frameworks */,
+				188ABC9124D93D4900BFF01D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				188ABC9924D93D4900BFF01D /* PBXTargetDependency */,
+			);
+			name = "Catty Project UITests";
+			productName = "Catty Project UITests";
+			productReference = 188ABC9324D93D4900BFF01D /* Catty Project UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		18A949F724BEE1F5004AD052 /* Catty Project */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18A94A0C24BEE1F8004AD052 /* Build configuration list for PBXNativeTarget "Catty Project" */;
@@ -419,6 +466,10 @@
 						CreatedOnToolsVersion = 11.6;
 						TestTargetID = 18A949F724BEE1F5004AD052;
 					};
+					188ABC9224D93D4900BFF01D = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 18A949F724BEE1F5004AD052;
+					};
 					18A949F724BEE1F5004AD052 = {
 						CreatedOnToolsVersion = 11.5;
 					};
@@ -439,12 +490,20 @@
 			targets = (
 				18A949F724BEE1F5004AD052 /* Catty Project */,
 				18826A9D24D7000B002306DE /* Catty Project Tests */,
+				188ABC9224D93D4900BFF01D /* Catty Project UITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		18826A9C24D7000B002306DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		188ABC9124D93D4900BFF01D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -554,6 +613,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		188ABC8F24D93D4900BFF01D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				188ABC9624D93D4900BFF01D /* Catty_Project_UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		18A949F424BEE1F5004AD052 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -613,6 +680,11 @@
 			target = 18A949F724BEE1F5004AD052 /* Catty Project */;
 			targetProxy = 18826AA324D7000B002306DE /* PBXContainerItemProxy */;
 		};
+		188ABC9924D93D4900BFF01D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 18A949F724BEE1F5004AD052 /* Catty Project */;
+			targetProxy = 188ABC9824D93D4900BFF01D /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -668,6 +740,46 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Catty Project.app/Catty Project";
+			};
+			name = Release;
+		};
+		188ABC9A24D93D4900BFF01D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8PJ9SKJ9FA;
+				INFOPLIST_FILE = "Catty Project UITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "sergeykorshunov.Catty-Project-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Catty Project";
+			};
+			name = Debug;
+		};
+		188ABC9B24D93D4900BFF01D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8PJ9SKJ9FA;
+				INFOPLIST_FILE = "Catty Project UITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "sergeykorshunov.Catty-Project-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Catty Project";
 			};
 			name = Release;
 		};
@@ -831,6 +943,15 @@
 			buildConfigurations = (
 				18826AA524D7000B002306DE /* Debug */,
 				18826AA624D7000B002306DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		188ABC9C24D93D4900BFF01D /* Build configuration list for PBXNativeTarget "Catty Project UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				188ABC9A24D93D4900BFF01D /* Debug */,
+				188ABC9B24D93D4900BFF01D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -9,7 +9,7 @@
 import RxSwift
 import Foundation
 
-class CatCellViewModel {
+final class CatCellViewModel {
     let id: String
     let image_url: URL?
     var isFavourite: Bool

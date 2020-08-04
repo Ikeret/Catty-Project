@@ -11,7 +11,7 @@ import RxSwift
 
 final class CatCollectionView: UICollectionView {
 
-    init() {
+    init(indetifier: String = "CatCollection") {
         let flowLayout = UICollectionViewFlowLayout()
         super.init(frame: CGRect.zero, collectionViewLayout: flowLayout)
 
@@ -21,6 +21,8 @@ final class CatCollectionView: UICollectionView {
 
         register(CatCell.self, forCellWithReuseIdentifier: CatCell.id)
         backgroundColor = .systemBackground
+        
+        accessibilityIdentifier = indetifier
     }
 
     required init?(coder: NSCoder) {

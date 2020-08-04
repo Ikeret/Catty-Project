@@ -11,7 +11,7 @@ import RxSwift
 
 final class FavouriteCatsController: UIViewController {
     
-    private let collectionView = CatCollectionView()
+    private let collectionView = CatCollectionView(indetifier: "FavouriteCatsCollection")
     
     private let sortButton = UIBarButtonItem().style {
         $0.image = UIImage(systemName: "arrow.up.arrow.down")

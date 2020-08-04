@@ -30,6 +30,7 @@ final class CatCell: UICollectionViewCell {
         shadowView.isHidden = true
         super.init(frame: frame)
         setupLayout()
+        accessibilityIdentifier = "CatCell"
     }
 
     required init?(coder: NSCoder) {
@@ -61,6 +62,7 @@ final class CatCell: UICollectionViewCell {
 
         let heartImage = UIImage(systemName: viewModel.favImageName)
         favouriteButton.setBackgroundImage(heartImage, for: .normal)
+        favouriteButton.accessibilityIdentifier = viewModel.favImageName
 
         setupBindings()
     }

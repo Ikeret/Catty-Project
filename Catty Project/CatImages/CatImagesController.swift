@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 
 final class CatImagesController: UIViewController {
-    private let collectionView = CatCollectionView()
+    private let collectionView = CatCollectionView(indetifier: "CatImagesCollection")
 
     private let filterButton = UIBarButtonItem().style {
         $0.image = UIImage(systemName: "slider.horizontal.3")
@@ -19,6 +19,7 @@ final class CatImagesController: UIViewController {
     private let logOutButton = UIBarButtonItem().style {
         $0.tintColor = .systemRed
         $0.image = UIImage(systemName: "escape")
+        $0.accessibilityIdentifier = "logOutButton"
     }
 
     private let refreshControl = UIRefreshControl()

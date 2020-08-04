@@ -14,7 +14,7 @@ final class MyUploadsController: UIViewController, UINavigationControllerDelegat
     
     private let viewModel: MyUploadsViewModel
     
-    private let collectionView = CatCollectionView()
+    private let collectionView = CatCollectionView(indetifier: "MyUploadsCollection")
         
     private let activityIndicator = UIActivityIndicatorView(style: .large).style {
         $0.size(70)

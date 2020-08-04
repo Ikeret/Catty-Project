@@ -36,6 +36,7 @@ final class LoginController: UIViewController {
         $0.backgroundColor = .secondarySystemBackground
         $0.textAlignment = .center
         $0.placeholder = "Enter a name or login"
+        $0.accessibilityIdentifier = "loginTextField"
     }
     
     private let loginButton = UIButton().style {
@@ -46,6 +47,7 @@ final class LoginController: UIViewController {
         $0.backgroundColor = .systemBlue
         $0.layer.cornerRadius = 15
         $0.isEnabled = false
+        $0.accessibilityIdentifier = "loginButton"
     }
 
     override func loadView() {
@@ -75,7 +77,6 @@ final class LoginController: UIViewController {
     
     private func setupBindings() {
         loginTextField.rx.text.orEmpty
-            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .map { $0.count > 2 }
             .bind(to: loginButton.rx.isEnabled).disposed(by: disposeBag)
         

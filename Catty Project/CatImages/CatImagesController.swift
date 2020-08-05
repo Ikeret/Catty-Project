@@ -14,6 +14,7 @@ final class CatImagesController: UIViewController {
 
     private let filterButton = UIBarButtonItem().style {
         $0.image = UIImage(systemName: "slider.horizontal.3")
+        $0.accessibilityIdentifier = "filterButton"
     }
     
     private let logOutButton = UIBarButtonItem().style {
@@ -67,9 +68,12 @@ final class CatImagesController: UIViewController {
         refreshControl.rx.controlEvent(.valueChanged).bind(to: viewModel.onReloadData)
             .disposed(by: disposeBag)
 
-        viewModel.displayItems.map({ $0.isEmpty }).bind(to: refreshControl.rx.isRefreshing)
-            .disposed(by: disposeBag)
+//        viewModel.displayItems.map({ $0.isEmpty }).bind(to: refreshControl.rx.isRefreshing)
+//            .disposed(by: disposeBag)
+        viewModel.displayItems.subscribe(onNext: { [weak self] _ in
+            self?.refreshControl.endRefreshing()
 
+            }).disposed(by: disposeBag)
         
         logOutButton.rx.tap.bind(to: viewModel.onLogOutButtonTapped).disposed(by: disposeBag)
         filterButton.rx.tap.bind(to: viewModel.onFilterButtonTapped).disposed(by: disposeBag)

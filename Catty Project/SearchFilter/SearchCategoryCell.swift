@@ -30,6 +30,7 @@ final class SearchCategoryCell: UITableViewCell {
             |-16-titleLabel.height(40)-16-|,
             0
         )
+        accessibilityIdentifier = "CategoryCell"
     }
     
     required init?(coder: NSCoder) {

@@ -11,9 +11,7 @@ import XCTest
 extension XCUIApplication {
     
     func swipeUp(times: Int) {
-        
         for _ in 0..<times { swipeUp() }
-        
     }
     
     func navigationBack() {

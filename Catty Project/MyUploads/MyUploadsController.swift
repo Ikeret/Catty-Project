@@ -25,7 +25,10 @@ final class MyUploadsController: UIViewController, UINavigationControllerDelegat
         $0.layer.borderWidth = 1
     }
     
-    private let libraryButton = UIBarButtonItem().style { $0.image = UIImage(systemName: "photo") }
+    private let libraryButton = UIBarButtonItem().style {
+        $0.image = UIImage(systemName: "photo")
+        $0.accessibilityIdentifier = "libraryButton"
+    }
     
     private let cameraButton = UIBarButtonItem().style { $0.image = UIImage(systemName: "camera") }
     

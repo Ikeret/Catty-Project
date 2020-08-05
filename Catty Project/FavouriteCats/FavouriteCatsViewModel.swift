@@ -34,7 +34,8 @@ final class FavouriteCatsViewModel {
                 CatCellViewModel(id: $0.image.id,
                                  image_url: $0.image.url,
                                  favouriteId: "\($0.id)",
-                                 isFavourite: true)
+                    repository: repository,
+                    isFavourite: true)
             }
             if strongSelf.lastAddedFirst { mapped.reverse() }
             strongSelf.storedItems = mapped

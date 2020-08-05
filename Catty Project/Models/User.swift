@@ -55,7 +55,7 @@ final class User {
         if let sub_id = users[name] {
             self.sub_id = sub_id
         } else {
-            sub_id = "id\(name.hash)"
+            sub_id = "id-\(name.hash)"
             users[name] = sub_id
         }
     }

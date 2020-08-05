@@ -96,15 +96,11 @@ final class CatCell: UICollectionViewCell {
             guard let strongSelf = self else { return }
             strongSelf.viewModel.changeFavourite()
             
-            let favButton = strongSelf.favouriteButton
+            let favImageName = strongSelf.viewModel.favImageName
+            let newImage = UIImage(systemName: favImageName)
+            strongSelf.favouriteButton.setBackgroundImage(newImage, for: .normal)
+            strongSelf.favouriteButton.accessibilityIdentifier = favImageName
             
-            if favButton.currentBackgroundImage == UIImage(systemName: "heart") {
-                favButton.setBackgroundImage(UIImage(systemName: "heart.fill"), for: .normal)
-                favButton.accessibilityIdentifier = "heart.fill"
-            } else {
-                favButton.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
-                favButton.accessibilityIdentifier = "heart"
-            }
         }).disposed(by: disposeBag)
     }
 }

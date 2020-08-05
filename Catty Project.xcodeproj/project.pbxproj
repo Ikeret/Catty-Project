@@ -60,8 +60,6 @@
 		87543EAC24D9920700A53BCC /* XCUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87543EAB24D9920700A53BCC /* XCUIApplication.swift */; };
 		87543EAE24D99FA600A53BCC /* AppLogin UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87543EAD24D99FA600A53BCC /* AppLogin UITest.swift */; };
 		87543EB024D99FBC00A53BCC /* CatImages UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87543EAF24D99FBB00A53BCC /* CatImages UITest.swift */; };
-		87543EB224D99FD900A53BCC /* FavouriteCats UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87543EB124D99FD900A53BCC /* FavouriteCats UITest.swift */; };
-		87543EB424D99FEE00A53BCC /* MyUploads UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87543EB324D99FEE00A53BCC /* MyUploads UITest.swift */; };
 		F1F5E5DF9FED367B4045BE45 /* Pods_Catty_Project_Catty_Project_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E401BB523B394C3F5F435A35 /* Pods_Catty_Project_Catty_Project_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -143,8 +141,6 @@
 		87543EAB24D9920700A53BCC /* XCUIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIApplication.swift; sourceTree = "<group>"; };
 		87543EAD24D99FA600A53BCC /* AppLogin UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppLogin UITest.swift"; sourceTree = "<group>"; };
 		87543EAF24D99FBB00A53BCC /* CatImages UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CatImages UITest.swift"; sourceTree = "<group>"; };
-		87543EB124D99FD900A53BCC /* FavouriteCats UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteCats UITest.swift"; sourceTree = "<group>"; };
-		87543EB324D99FEE00A53BCC /* MyUploads UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyUploads UITest.swift"; sourceTree = "<group>"; };
 		8904639943776EE276EC3180 /* Pods-Catty Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catty Project.release.xcconfig"; path = "Target Support Files/Pods-Catty Project/Pods-Catty Project.release.xcconfig"; sourceTree = "<group>"; };
 		9E201E2726F3B60317AE7FCC /* Pods-Catty Project-Catty Project Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catty Project-Catty Project Tests.debug.xcconfig"; path = "Target Support Files/Pods-Catty Project-Catty Project Tests/Pods-Catty Project-Catty Project Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		B073BA2D5E5383259AF1B0D2 /* Pods_Catty_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Catty_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,8 +230,6 @@
 			children = (
 				87543EAD24D99FA600A53BCC /* AppLogin UITest.swift */,
 				87543EAF24D99FBB00A53BCC /* CatImages UITest.swift */,
-				87543EB124D99FD900A53BCC /* FavouriteCats UITest.swift */,
-				87543EB324D99FEE00A53BCC /* MyUploads UITest.swift */,
 				87543EAA24D991D900A53BCC /* Extensions */,
 				188ABC9724D93D4900BFF01D /* Info.plist */,
 			);
@@ -281,8 +275,8 @@
 				18A94A0F24BEE3D2004AD052 /* Coordinators */,
 				18A94A1024BEE3EA004AD052 /* CatCollection */,
 				1863CDEB24C48B0100D0E33D /* CatImages */,
-				18FBF87124C5BDBA0013178E /* SearchFilter */,
 				1863CDED24C48B1C00D0E33D /* FavouriteCats */,
+				18FBF87124C5BDBA0013178E /* SearchFilter */,
 				1863CDEC24C48B0D00D0E33D /* CatDetail */,
 				18FA511524C83466000FAC5F /* MyUploads */,
 				189A2F6224CAD0430014687E /* CatAnalysis */,
@@ -637,9 +631,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87543EB424D99FEE00A53BCC /* MyUploads UITest.swift in Sources */,
 				87543EB024D99FBC00A53BCC /* CatImages UITest.swift in Sources */,
-				87543EB224D99FD900A53BCC /* FavouriteCats UITest.swift in Sources */,
 				87543EAE24D99FA600A53BCC /* AppLogin UITest.swift in Sources */,
 				87543EAC24D9920700A53BCC /* XCUIApplication.swift in Sources */,
 			);

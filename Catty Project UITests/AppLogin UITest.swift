@@ -11,6 +11,7 @@ import XCTest
 class AppLogin_UITest: XCTestCase {
     
     let app = XCUIApplication()
+    static let loginName = UUID().uuidString
     
     func login() {
         let loginTF = app.textFields["loginTextField"]
@@ -22,10 +23,10 @@ class AppLogin_UITest: XCTestCase {
         XCTAssertFalse(loginButton.isEnabled)
         
         loginTF.tap()
-        loginTF.typeText("Se")
+        loginTF.typeText(String(AppLogin_UITest.loginName.prefix(2)))
         XCTAssertFalse(loginButton.isEnabled)
 
-        loginTF.typeText("r")
+        loginTF.typeText("R")
         XCTAssertTrue(loginButton.isEnabled)
         
         
@@ -33,7 +34,7 @@ class AppLogin_UITest: XCTestCase {
         
         XCTAssertFalse(loginButton.isEnabled)
         
-        loginTF.typeText("Sergey")
+        loginTF.typeText(AppLogin_UITest.loginName)
         
         XCTAssertTrue(loginButton.isEnabled)
         loginButton.tap()
